@@ -1,8 +1,12 @@
+const express = require('express');
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
+const { hold } = require('./common');
 
-const handleCheckExtension = (request, response) => {
-    const twiml = new VoiceResponse();
-
+/**
+ * @param {VoiceResponse} twiml
+ * @param {express.Request} request
+ */
+function checkExtension(twiml, request) {
     // If the user entered digits, process their request
     switch (request.body.Digits) {
         case '111':
@@ -10,14 +14,11 @@ const handleCheckExtension = (request, response) => {
             break;
         default:
             twiml.say("Sorry, that's not a valid response. Please hold.");
-            twiml.play('https://demo.twilio.com/docs/classic.mp3');
+            hold(twiml);
             break;
     }
-
-    response.type('text/xml');
-    response.send(twiml.toString());
 };
 
 module.exports = {
-    handleCheckExtension
+    checkExtension
 };

@@ -1,8 +1,9 @@
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
 
-const handleMoreInfo = (request, response) => {
-    const twiml = new VoiceResponse();
-
+/**
+ * @param {VoiceResponse} twiml
+ */
+function moreInfo(twiml) {
     twiml.say(
         "Once again, welcome to the Phone Tree of Despair. This is a game made for loo dum dar ray 47 by Jez Swanson.");
     twiml.pause();
@@ -24,11 +25,8 @@ const handleMoreInfo = (request, response) => {
     twiml.pause();
 
     twiml.redirect('/entry');
-
-    response.type('text/xml');
-    response.send(twiml.toString());
 }
 
 module.exports = {
-    handleMoreInfo
+    moreInfo
 };

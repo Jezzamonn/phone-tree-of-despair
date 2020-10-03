@@ -1,8 +1,9 @@
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
 
-const handleEntry = (request, response) => {
-    const twiml = new VoiceResponse();
-
+/**
+ * @param {VoiceResponse} twiml
+ */
+function entry(twiml) {
     const gatherNode = twiml.gather({
         input: 'dtmf',
         numDigits: 3,
@@ -13,11 +14,8 @@ const handleEntry = (request, response) => {
     gatherNode.say('If you have an extension code, enter it now. ' + 'Otherwise, stay on the line for more information.');
 
     twiml.redirect('/more-info');
-
-    response.type('text/xml');
-    response.send(twiml.toString());
 }
 
 module.exports = {
-    handleEntry
+    entry
 };

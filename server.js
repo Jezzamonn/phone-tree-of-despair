@@ -19,6 +19,8 @@ app.post('/voice', (request, response) => {
   /** helper function to set up a <Gather> */
   function gather() {
     const gatherNode = twiml.gather({ numDigits: 1 });
+    gatherNode.say('Thank you for calling the Phone Tree of Despair. Your call is so, so, important to us.');
+    gatherNode.pause();
     gatherNode.say('For sales, press 1. For support, press 2.');
 
     // If the user doesn't enter input, loop

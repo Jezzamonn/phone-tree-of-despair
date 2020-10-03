@@ -1,0 +1,19 @@
+{
+  "name": "ld47",
+  "version": "0.0.1",
+  "description": "Ludum Dare 47",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jezzamonn/LD47.git"
+  },
+  "author": "Jez Swanson",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Jezzamonn/LD47/issues"
+  },
+  "homepage": "https://github.com/Jezzamonn/LD47#readme"
+}

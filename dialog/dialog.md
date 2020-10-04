@@ -18,7 +18,7 @@ Once again, welcome to the Phone Tree of Despair. This is a game made for loo du
 First, some disclaimers. While this game sometimes uses your voice as input, it does not save any voice recordings. It also does not store your phone number.
 In this game, you'll navigate a state-of-the-art, user-friendly phone system. Your goal is to renew your registration.
 Your first stop should be the registrations office. To get there, type the extension code 1 1 1 at the main menu.
-One last thing. You do not want to be put on hold. If you get put on hold, you'll be forever stuck in a loop. So if you hear hold music, you should hang up and try calling again.
+One last thing. You have to avoid getting put on hold. If you get put on hold, you'll be forever stuck in a loop. So if you hear hold music, you should hang up and try calling again.
 Alright, good luck!
 
 ## Registration
@@ -51,7 +51,15 @@ Congrations, you have killed the automated voice service!
 
 Thank you for your rating.
 
-This was Phone Tree of Despair, a game made for Ludum Dare 47. I hope you enjoyed it! I'm Jez Swanson, known as jezzamonn on twitter. If you entered Ludum Dare, please give the game a rating on the Ludum Dare website. You can find the link at jezzamon dot itch dot io. Congrats again on winning! Good bye!
+## Epilog
+
+This was Phone Tree of Despair, a game made for Ludum Dare 47. I hope you enjoyed it! Or alternatively, I hope it made you very, very angry.
+
+You managed to renew your registration, although the phone system lives on to terrorise future victims.
+
+Not only did you manage to renew your registration, but you also killed the phone system! May you be hailed as a hero for generations to come.
+
+I'm Jez Swanson, known as jezzamonn on twitter. If you entered Ludum Dare, please give the game a rating on the Ludum Dare website. You can find the link at jezzamon dot itch dot io. Congrats again on winning! Good bye!
 
 Sorry, that doesn't look correct. If you need to look up information about your registration, try contacting the other departments. You can find their extension codes by accessing the extension directory by pressing 1 2 3 at the main menu. I'll transfer you there now.
 

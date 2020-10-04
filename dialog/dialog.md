@@ -43,9 +43,13 @@ Ok. Now key in the date of your last renewal. First enter the year, then the mon
 Alright, that all looks correct! Your registration is now renewed.
 Before you leave, can you rate your customer experience today? Please enter a number from 1 to 5.
 
-Thank you for your rating.
+Please enter a number from 1 to 5.
+
+Please, please enter a number from 1 to 5.
 
 Congrations, you have killed the automated voice service!
+
+Thank you for your rating.
 
 This was Phone Tree of Despair, a game made for Ludum Dare 47. I hope you enjoyed it! I'm Jez Swanson, known as jezzamonn on twitter. If you entered Ludum Dare, please give the game a rating on the Ludum Dare website. You can find the link at jezzamon dot itch dot io. Congrats again on winning! Good bye!
 
@@ -104,3 +108,28 @@ Ok.... That looks right. Ok, now I need the postal code of... Kathu, South Afric
 Ok... Great, that worked too. Um. Can you also check the postal code of White Cliffs, New South Wales, Australia?
 
 Ok.... Looks good. Ok, the system is loading. doot do do... Still loading... Ok, it's up! Let me see. Uh... Oh that's right, we only have one office. It's postal code is 5 6 7 8 9. That should be what you need. Oh and the system crashed again. Great. Well, yeah, that's all you need, 5 6 7 8 9. Ok... Bye.
+
+## ID Department
+
+Hi, this is the ID department. We can look up your registration ID here. First, I'll need your name.
+
+Hm, we don't have anything for that name. Maybe you're registered under a different name? Any idea what that would be?
+
+No, nothing for that either. Let me transfer you to our naming department.
+
+Sorry, I didn't catch that. Let me put you on hold.
+
+Ah great, James Smith. (as if reading from the screen) Pin number 2 4 3 8, Session identifier 9 0, Flange-tron code 6 1 1, Isotope number 97 thousand, 6 hundred and 48. Ok great. Now, before I can give you your registration ID, I'll need some information to confirm your identity. First, can I have your personal pin number? Just key it in on the number pad there.
+
+Oh! Sorry, that doesn't look correct. Let me put you on hold, while I... figure out what to do (in background: Gary we got an imposter!)
+
+Ok, now I'll need your Flange-tron code.
+
+Ok, and now your isotope number?
+
+Alright! You are indeed James Smith! Your registration number is 5 4 0 0 2. Have a good day!
+
+## Time Zone
+
+This is the International Date Time Zone Consortium. The datetime of your last renewal, as a Unix Timestamp, is 1 5 7 4. 7 2 6 4. 0 0.
+If you just need the day, it was a Tuesday.

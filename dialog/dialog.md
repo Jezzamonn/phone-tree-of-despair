@@ -49,6 +49,15 @@ Congrations, you have killed the automated voice service!
 
 This was Phone Tree of Despair, a game made for Ludum Dare 47. I hope you enjoyed it! I'm Jez Swanson, known as jezzamonn on twitter. If you entered Ludum Dare, please give the game a rating on the Ludum Dare website. You can find the link at jezzamon dot itch dot io. Congrats again on winning! Good bye!
 
-Sorry, that doesn't look correct. If you need to look up information about your registration, try contacting the other departments. You can find their extension codes by accessing the extension registry by pressing 1 2 3 at the main menu. I'll transfer you there now.
+Sorry, that doesn't look correct. If you need to look up information about your registration, try contacting the other departments. You can find their extension codes by accessing the extension directory by pressing 1 2 3 at the main menu. I'll transfer you there now.
 
 Sorry about that. Please hold.
+
+# Directory
+
+For the extension directory, use extension 1 2 3.
+For the registration department, use extension 1 1 1.
+For the I D department, use extension 5 7 5.
+For the addressing department, use extension 8 1 8.
+For the International Date Time Zone Consortium, use extension 3 5 3.
+For Bob's office, use the extension D O G.

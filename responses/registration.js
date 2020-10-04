@@ -1,4 +1,3 @@
-const twilio = require('twilio');
 const { getRegistrationId, getRegistrationDate, getRegistrationPostalCode } = require('./answers');
 const { hold } = require('./common');
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
@@ -126,7 +125,7 @@ function registrationRatingResponse(twiml, request) {
  * @param {Request} request
  */
 function registrationIncorrect(twiml) {
-    twiml.say("Sorry, that doesn't look correct. If you need to look up information about your registration, try contacting the other departments. You can find their extension codes by accessing the extension registry by pressing 1 2 3 at the main menu. I'll transfer you there now.");
+    twiml.say("Sorry, that doesn't look correct. If you need to look up information about your registration, try contacting the other departments. You can find their extension codes by accessing the extension directory by pressing 1 2 3 at the main menu. I'll transfer you there now.");
     twiml.redirect('/entry');
 }
 

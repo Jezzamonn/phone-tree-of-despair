@@ -14,11 +14,20 @@ function handleRequest(fn) {
 /**
  * @param {VoiceResponse} twiml
  */
+function playSound(twiml, path) {
+    const fullPath = 'https://storage.googleapis.com/stellar-ether-198321.appspot.com/' + path;
+    twiml.play(fullPath);
+}
+
+/**
+ * @param {VoiceResponse} twiml
+ */
 function hold(twiml) {
-    twiml.play('https://demo.twilio.com/docs/classic.mp3');
+    playSound(twiml, 'please-hold-mangled.mp3');
 }
 
 module.exports = {
     handleRequest,
     hold,
+    playSound,
 };

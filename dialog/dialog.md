@@ -51,6 +51,10 @@ Congrations, you have killed the automated voice service!
 
 Thank you for your rating.
 
+Sorry, that doesn't look correct. If you need to look up information about your registration, try contacting the other departments. You can find their extension codes by accessing the extension directory by pressing 1 2 3 at the main menu. I'll transfer you there now.
+
+Sorry about that. Please hold.
+
 ## Epilog
 
 This was Phone Tree of Despair, a game made for Ludum Dare 47. I hope you enjoyed it! Or alternatively, I hope it made you very, very angry.
@@ -60,10 +64,6 @@ You managed to renew your registration, although the phone system lives on to te
 Not only did you manage to renew your registration, but you also killed the phone system! May you be hailed as a hero for generations to come.
 
 I'm Jez Swanson, known as jezzamonn on twitter. If you entered Ludum Dare, please give the game a rating on the Ludum Dare website. You can find the link at jezzamon dot itch dot io. Congrats again on winning! Good bye!
-
-Sorry, that doesn't look correct. If you need to look up information about your registration, try contacting the other departments. You can find their extension codes by accessing the extension directory by pressing 1 2 3 at the main menu. I'll transfer you there now.
-
-Sorry about that. Please hold.
 
 ## Directory
 

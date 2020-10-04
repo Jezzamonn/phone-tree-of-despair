@@ -1,5 +1,5 @@
 const { getRegistrationId, getRegistrationDate, getRegistrationPostalCode } = require('./answers');
-const { hold } = require('./common');
+const { hold, playSound } = require('./common');
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
 
 /**
@@ -10,13 +10,14 @@ function registration(twiml) {
     twiml.pause();
     twiml.pause();
     twiml.pause();
-    twiml.say('I got "James Smith", is that correct?');
-    twiml.gather({
+    const gatherNode = twiml.gather({
         input: 'speech',
         action: '/registration-name-response',
         timeout: 3,
         hints: 'yes, no',
     });
+    gatherNode.say('I got "James Smith", is that correct?');
+    gatherNode.pause();
 
     twiml.redirect('./registration2');
 };
@@ -109,16 +110,34 @@ function registrationDateResponse(twiml, request) {
  * @param {Request} request
  */
 function registrationRatingResponse(twiml, request) {
-    // TODO: Kill the AI!!
-    // Also log the response?
+    if (request.body.Digits == '4' ||
+        request.body.Digits == '5') {
+        twiml.say(`That's very nice of you to say that. Thank you for your rating.`);
+        twiml.pause();
+        twiml.redirect('/victory1');
+        return;
+    }
+    if (request.body.Digits == '2' ||
+        request.body.Digits == '3') {
+        twiml.say('I see. Thank you for your rating.');
+        twiml.pause();
+        twiml.redirect('/victory1');
+        return;
+    }
+    if (request.body.Digits == '1') {
+        twiml.say('How dare you.');
+        twiml.pause();
+        twiml.redirect('/victory1');
+        return;
+    }
 
-    twiml.say('Thank you for your rating.');
-    twiml.pause();
-
+    twiml.say('Error. That is not a number from 1 to 5. Error. Error.');
+    playSound(twiml, 'kill.mp3');
+    twiml.redirect('/victory2');
     // twiml.say('Congrations, you have killed the automated voice service!');
     // twiml.pause();
 
-    twiml.say("This was Phone Tree of Despair, a game made for Ludum Dare 47. I hope you enjoyed it! I'm Jez Swanson, known as jezzamonn on twitter. If you entered Ludum Dare, please give the game a rating on the Ludum Dare website. You can find the link at jezzamon dot itch dot io. Congrats again on winning! Good bye!");
+    // twiml.say("This was Phone Tree of Despair, a game made for Ludum Dare 47. I hope you enjoyed it! I'm Jez Swanson, known as jezzamonn on twitter. If you entered Ludum Dare, please give the game a rating on the Ludum Dare website. You can find the link at jezzamon dot itch dot io. Congrats again on winning! Good bye!");
 };
 
 /**

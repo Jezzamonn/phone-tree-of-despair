@@ -5,14 +5,15 @@ const VoiceResponse = require('twilio').twiml.VoiceResponse;
  * @param {VoiceResponse} twiml
  */
 function address(twiml) {
-    // twiml.say(`Hi, this is the addressing office. I'm currently on lunch break actually, is this something that can wait?`);
-    playSound(twiml, 'addressing/addressing-intro.mp3');
-    twiml.gather({
+    const gatherNode = twiml.gather({
         input: 'speech',
         action: '/address-can-wait',
         hints: 'yes, no',
         timeout: 3,
     });
+    // twiml.say(`Hi, this is the addressing office. I'm currently on lunch break actually, is this something that can wait?`);
+    playSound(gatherNode, 'addressing/addressing-intro.mp3');
+    gatherNode.pause();
 
     twiml.redirect('./address-can-wait');
 };
@@ -32,14 +33,15 @@ function addressCanWait(twiml, request) {
 
     // twiml.say(`No? Ok, well, I'm almost done with this crossword. If you could help me with the last few clues, then I should be able to help you with your problem.
     // Alright, let's see... 16 Down. A 6 letter word for "coffee", starts with a C.`);
-    playSound(twiml, 'addressing/addressing-cant-wait.mp3');
-    playSound(twiml, 'addressing/addressing-coffee-hint.mp3');
-    twiml.gather({
+    const gatherNode = twiml.gather({
         input: 'speech',
         action: '/address-clue1',
         timeout: 3,
         hints: 'coffee',
     });
+    playSound(gatherNode, 'addressing/addressing-cant-wait.mp3');
+    playSound(gatherNode, 'addressing/addressing-coffee-hint.mp3');
+    gatherNode.pause();
 
     twiml.redirect('./address-clue-too-long');
 };
@@ -55,37 +57,14 @@ function addressClue1(twiml, request) {
         return;
     }
 
-    // twiml.say(`Coffee! That it! Ok, 3 Across. Baby feline. 6 letters.`);
-    playSound(twiml, 'addressing/addressing-kitten-hint.mp3');
-    twiml.gather({
-        input: 'speech',
-        action: '/address-clue2',
-        timeout: 3,
-        hints: 'kitten',
-    });
-
-    twiml.redirect('./address-clue-too-long');
-};
-
-/**
- * @param {VoiceResponse} twiml
- * @param {Request} request
- */
-function addressClue2(twiml, request) {
-    const answer = getSpeechAnswer(request);
-    if (!answer.includes('kitten')) {
-        addressClueWrong(twiml);
-        return;
-    }
-
-    // twiml.say(`Yup, kitten fits. Next one: 4 Down. Element with 8 electrons. 6 letters.`);
-    playSound(twiml, 'addressing/addressing-oxygen-hint.mp3');
-    twiml.gather({
+    const gatherNode = twiml.gather({
         input: 'speech',
         action: '/address-clue3',
         timeout: 3,
         hints: 'oxygen',
     });
+    playSound(gatherNode, 'addressing/addressing-oxygen-hint.mp3');
+    gatherNode.pause();
 
     twiml.redirect('./address-clue-too-long');
 };
@@ -102,13 +81,14 @@ function addressClue3(twiml, request) {
     }
 
     // twiml.say(`Oxygen fits! Ok, last one: 1 Across. Another word for quiet. 6 letters long, the second letter is 'I' and the third letter is 'L'.`);
-    playSound(twiml, 'addressing/addressing-silent-hint.mp3');
-    twiml.gather({
+    const gatherNode = twiml.gather({
         input: 'speech',
         action: '/address-clue4',
         timeout: 3,
         hints: 'silent',
     });
+    playSound(gatherNode, 'addressing/addressing-silent-hint.mp3');
+    gatherNode.pause();
 
     twiml.redirect('./address-clue-too-long');
 };
@@ -148,7 +128,6 @@ module.exports = {
     address,
     addressCanWait,
     addressClue1,
-    addressClue2,
     addressClue3,
     addressClue4,
     addressClueTooLong,

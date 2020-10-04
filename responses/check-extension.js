@@ -36,7 +36,7 @@ function checkExtension(twiml, request) {
             playSound(twiml, 'noise/oof.mp3');
             break;
         case '333':
-            playSound(twiml, 'noise/crinkling.mp3');
+            playSound(twiml, 'noise/hello.mp3');
             break;
         case '343':
             playSound(twiml, 'noise/traffic.mp3');
@@ -51,7 +51,7 @@ function checkExtension(twiml, request) {
             playSound(twiml, 'noise/mumbling-distorted.mp3');
             break;
         case '383':
-            playSound(twiml, 'noise/oof.mp3');
+            playSound(twiml, 'noise/crinkling.mp3');
             break;
         case '393':
             playSound(twiml, 'noise/traffic.mp3');

@@ -9,7 +9,7 @@ function officeAddress(twiml) {
         input: 'dtmf',
         numDigits: 5,
         action: '/office-address2',
-        timeout: 10,
+        timeout: 20,
     });
     // gatherNode.say(`Hi, you've reached the "what is the address of my registration office" department. Now, you're gonna have to be patient, 'cause we're having some database problems at the moment. Um... actually would you mind helping? I need you to look up the postal code of a few places. Um, lets start with Antelope Hills, Wyoming, USA. Can you key in the ZIP code?`);
     playSound(gatherNode, 'office-address/office-address-intro.mp3');
@@ -31,10 +31,11 @@ function officeAddress2(twiml, request) {
         input: 'dtmf',
         numDigits: 4,
         action: '/office-address3',
-        timeout: 10,
+        timeout: 20,
     });
     // gatherNode.say(`Ok.... That looks right. Ok, now I need the postal code of... Kathu, South Africa.`);
     playSound(gatherNode, 'office-address/office-address-kathu.mp3');
+    gatherNode.say({voice: 'man'}, `That's K. A. T. H. U.`);
 
     twiml.redirect('./office-address-too-long');
 }
@@ -53,7 +54,7 @@ function officeAddress3(twiml, request) {
         input: 'dtmf',
         numDigits: 4,
         action: '/office-address4',
-        timeout: 10,
+        timeout: 20,
     });
     // gatherNode.say(`Ok... Great, that worked too. Um. Can you also check the postal code of White Cliffs, New South Wales, Australia?`);
     playSound(gatherNode, 'office-address/office-address-white-cliffs.mp3');

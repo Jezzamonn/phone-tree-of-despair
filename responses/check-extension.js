@@ -19,7 +19,10 @@ function checkExtension(twiml, request) {
             twiml.say("That's the ID department");
             break;
         case '818':
-            twiml.say("That's the address department");
+            twiml.redirect('/address');
+            break;
+        case '828':
+            twiml.redirect('/office-address');
             break;
         case '353':
             twiml.say("That's the date department");

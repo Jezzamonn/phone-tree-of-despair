@@ -15,6 +15,7 @@ function registration(twiml) {
         input: 'speech',
         action: '/registration-name-response',
         timeout: 3,
+        hints: 'yes, no',
     });
 
     twiml.redirect('./registration2');

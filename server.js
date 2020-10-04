@@ -8,6 +8,8 @@ const checkExtensionResponses = require('./responses/check-extension.js');
 const moreInfoResponses = require('./responses/more-info.js');
 const registrationResponses = require('./responses/registration.js');
 const directoryResponses = require('./responses/directory.js');
+const addressResponses = require('./responses/address.js');
+const officeAddressResponses = require('./responses/office-address.js');
 
 const responseGroups = [
     entryResponses,
@@ -15,6 +17,8 @@ const responseGroups = [
     moreInfoResponses,
     registrationResponses,
     directoryResponses,
+    addressResponses,
+    officeAddressResponses,
 ]
 
 const app = express();

@@ -10,7 +10,7 @@ function getRegistrationId(request) {
  * @param {Request} request
  */
 function getRegistrationPostalCode(request) {
-    return '12345';
+    return '56789';
 }
 
 /**

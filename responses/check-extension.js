@@ -16,7 +16,7 @@ function checkExtension(twiml, request) {
             twiml.redirect('/directory');
             break;
         case '575':
-            twiml.say("That's the ID department");
+            twiml.redirect('/id');
             break;
         case '818':
             twiml.redirect('/address');

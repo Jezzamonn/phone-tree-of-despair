@@ -11,6 +11,7 @@ const directoryResponses = require('./responses/directory.js');
 const addressResponses = require('./responses/address.js');
 const officeAddressResponses = require('./responses/office-address.js');
 const datetimeResponses = require('./responses/datetime.js');
+const idResponses = require('./responses/id.js');
 
 const responseGroups = [
     entryResponses,
@@ -21,6 +22,7 @@ const responseGroups = [
     addressResponses,
     officeAddressResponses,
     datetimeResponses,
+    idResponses,
 ]
 
 const app = express();

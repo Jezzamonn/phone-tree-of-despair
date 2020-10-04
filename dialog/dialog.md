@@ -53,7 +53,7 @@ Sorry, that doesn't look correct. If you need to look up information about your 
 
 Sorry about that. Please hold.
 
-# Directory
+## Directory
 
 For the extension directory, use extension 1 2 3.
 For the registration department, use extension 1 1 1.
@@ -61,3 +61,17 @@ For the I D department, use extension 5 7 5.
 For the addressing department, use extension 8 1 8.
 For the International Date Time Zone Consortium, use extension 3 5 3.
 For Bob's office, use the extension D O G.
+
+## Address
+
+Hi, this is the addressing office. I'm currently on lunch break actually, is this something that can wait?
+
+Ok great. I'll put you on hold.
+
+No? Ok, well, I'm almost done with this crossword. If you could help me with the last few clues, then I should be able to help you with your problem.
+Alright, let's see. 16 Down. A 6 letter word for "coffee", starts with a C.
+Coffee! That it! Ok, 3 Across. Baby feline. 6 letters.
+Yup, kitten fits. 4 Down. Element with 8 Electrons. 7 letters.
+Oxygen fits! Ok, last one. Another word for quiet. 6 letters long, the second letter is I and the third letter is L.
+Hm, no, that's not it. Let me put you on hold while I think about it.
+Not sure? Yeah me neither. Let me put you on hold while I think about it.

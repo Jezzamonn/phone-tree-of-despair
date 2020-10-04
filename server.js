@@ -1,12 +1,20 @@
 const express = require('express');
-const VoiceResponse = require('twilio').twiml.VoiceResponse;
 const urlencoded = require('body-parser').urlencoded;
+const decamelize = require('decamelize');
 
-const { entry } = require('./responses/entry.js');
-const { checkExtension } = require('./responses/check-extension.js');
-const { moreInfo } = require('./responses/more-info.js');
-const { registration, registration2, registration3, registrationFail } = require('./responses/registration.js');
 const { handleRequest } = require('./responses/common.js');
+const entryResponses = require('./responses/entry.js');
+const checkExtensionResponses = require('./responses/check-extension.js');
+const moreInfoResponses = require('./responses/more-info.js');
+const registrationResponses = require('./responses/registration.js');
+const { response } = require('express');
+
+const responseGroups = [
+    entryResponses,
+    checkExtensionResponses,
+    moreInfoResponses,
+    registrationResponses,
+]
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -15,17 +23,17 @@ const port = process.env.PORT || 8080;
 app.use(urlencoded({ extended: false }));
 
 
-// Create a routes that will handle Twilio webhook requests, sent as an
-// HTTP POST request.
-
-app.post('/entry', handleRequest(entry));
-app.post('/check-extension', handleRequest(checkExtension));
-app.post('/more-info', handleRequest(moreInfo));
-app.post('/registration', handleRequest(registration));
-app.post('/registration2', handleRequest(registration2));
-app.post('/registration3', handleRequest(registration3));
-app.post('/registration-fail', handleRequest(registrationFail));
+// Create routes that will handle Twilio webhook requests, sent as
+// HTTP POST requests.
+console.log('Supported paths:')
+for (const responseGroup of responseGroups) {
+    for (const responseName of Object.keys(responseGroup)) {
+        const path = '/' + decamelize(responseName, '-');
+        app.post(path, handleRequest(responseGroup[responseName]));
+        console.log(`  ${path}`);
+    }
+}
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`App listening at http://localhost:${port}`)
 });

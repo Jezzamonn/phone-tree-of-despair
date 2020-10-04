@@ -7,7 +7,6 @@ const entryResponses = require('./responses/entry.js');
 const checkExtensionResponses = require('./responses/check-extension.js');
 const moreInfoResponses = require('./responses/more-info.js');
 const registrationResponses = require('./responses/registration.js');
-const { response } = require('express');
 
 const responseGroups = [
     entryResponses,

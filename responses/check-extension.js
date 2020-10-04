@@ -54,7 +54,7 @@ function checkExtension(twiml, request) {
             playSound(twiml, 'noise/crinkling.mp3');
             break;
         case '393':
-            playSound(twiml, 'noise/traffic.mp3');
+            playSound(twiml, 'noise/chickensound.mp3');
             break;
         case '364':
             twiml.say("That's Bob's office");

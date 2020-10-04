@@ -26,8 +26,17 @@ function hold(twiml) {
     playSound(twiml, 'please-hold-mangled.mp3');
 }
 
+/**
+ * @param {Request} request
+ */
+function getSpeechAnswer(request) {
+    console.log(request.body.SpeechResult);
+    return (request.body.SpeechResult || '').toLowerCase();
+}
+
 module.exports = {
     handleRequest,
     hold,
     playSound,
+    getSpeechAnswer,
 };

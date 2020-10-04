@@ -78,7 +78,7 @@ function addressClue2(twiml, request) {
         return;
     }
 
-    // twiml.say(`Yup, kitten fits. Next one: 4 Down. Element with 8 electrons. And its 7 letters.`);
+    // twiml.say(`Yup, kitten fits. Next one: 4 Down. Element with 8 electrons. 6 letters.`);
     playSound(twiml, 'addressing/addressing-oxygen-hint.mp3');
     twiml.gather({
         input: 'speech',

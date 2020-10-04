@@ -80,7 +80,7 @@ Not sure? Yeah me neither. Let me put you on hold while I think about it.
 
 Coffee! That it! Ok, 3 Across. Baby feline. 6 letters.
 
-Yup, kitten fits. Next one: 4 Down. Element with 8 electrons. And its 7 letters.
+Yup, kitten fits. Next one: 4 Down. Element with 8 electrons. 6 letters.
 
 Oxygen fits! Ok, last one: 1 Across. Another word for quiet. 6 letters long, the second letter is 'I' and the third letter is 'L'.
 

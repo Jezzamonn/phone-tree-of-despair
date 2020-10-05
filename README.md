@@ -22,7 +22,7 @@ Stay tuned for a browser-based version that doesn't need you to make a call!
 
 ## Costs and stuff! 💸
 
-Running this game costs about a dollar each time someone plays through it, so if you want to cover costs, you can send a donation via the itch.io page. If not, that's cool too, but if it goes viral I may have to take it down 😅
+Running this game costs about a dollar each time someone plays through it, so if you want to cover costs, you can send a donation via the [itch.io](https://jezzamon.itch.io/phone-tree-of-despair) page. If not, that's cool too, but if it goes viral I may have to take it down 😅
 
 ## Credits ✨
 The programming and music were created entirely by me. Special thanks to those who did voice acting:

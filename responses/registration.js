@@ -19,7 +19,7 @@ function registration(twiml) {
     gatherNode.say('I got "James Smith", is that correct?');
     gatherNode.pause();
 
-    twiml.redirect('./registration2');
+    twiml.redirect('./registration-fail');
 };
 
 /**

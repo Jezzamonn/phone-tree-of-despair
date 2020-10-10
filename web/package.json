@@ -1,0 +1,21 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "Web interface to Phone Tree of Despair",
+  "scripts": {
+    "webpack": "webpack",
+    "css": "mkdir -p build/css/ && rsync -a --delete src/css/ build/css/",
+    "html": "mkdir -p build/ && rsync -a --delete src/index.html build/index.html",
+    "build": "npm-run-all webpack css html",
+    "clean": "rm -r build/"
+  },
+  "author": "Jez Swanson",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "npm-run-all": "^4.1.5"
+  }
+}

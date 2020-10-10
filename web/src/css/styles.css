@@ -26,11 +26,11 @@ body {
     transition: background-color 0.2s;
 }
 
-.numpad-element:hover, .numpad-element:focus {
+.numpad-element:not([disabled]):hover, .numpad-element:not([disabled]):focus {
     background-color: #ddd;
 }
 
-.numpad-element:active {
+.numpad-element:not([disabled]):active {
     background-color: #bbb;
 }
 
@@ -39,11 +39,11 @@ body {
     background-color: #76db7c;
 }
 
-.numpad-call:hover, .numpad-call:focus {
+.numpad-call:not([disabled]):hover, .numpad-call:not([disabled]):focus {
     background-color: #60c567;
 }
 
-.numpad-call:active {
+.numpad-call:not([disabled]):active {
     background-color: #4caa52;
 }
 
@@ -51,11 +51,11 @@ body {
     background-color: #db7676;
 }
 
-.numpad-call__in-call:hover, .numpad-call__in-call:focus {
+.numpad-call__in-call:not([disabled]):hover, .numpad-call__in-call:not([disabled]):focus {
     background-color: #c56060;
 }
 
-.numpad-call__in-call:active {
+.numpad-call__in-call:not([disabled]):active {
     background-color: #aa4c4c;
 }
 

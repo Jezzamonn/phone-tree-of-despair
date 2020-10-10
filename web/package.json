@@ -10,18 +10,18 @@
       ],
       "extensions": "html"
     },
-    "css": {
+    "sass": {
       "patterns": [
         "src/css/**"
       ],
-      "extensions": "css"
+      "extensions": "scss"
     }
   },
   "scripts": {
     "reload": "reload -b -d build",
     "watch": "npm-watch",
     "webpack": "webpack",
-    "css": "mkdir -p build/css/ && rsync -a --delete src/css/ build/css/",
+    "sass": "mkdir -p build/css/ && sass src/css/styles.scss build/css/styles.css",
     "html": "mkdir -p build/ && rsync -a --delete src/index.html build/index.html",
     "build": "npm-run-all --parallel webpack css html",
     "clean": "rm -r build/"
@@ -31,10 +31,11 @@
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "babel-loader": "^8.1.0",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
     "npm-run-all": "^4.1.5",
     "npm-watch": "^0.7.0",
-    "reload": "^3.1.1"
+    "reload": "^3.1.1",
+    "sass": "^1.27.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
   }
 }

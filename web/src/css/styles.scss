@@ -24,39 +24,45 @@ body {
     outline: none;
     padding: 0;
     transition: background-color 0.2s;
-}
 
-.numpad-element:not([disabled]):hover, .numpad-element:not([disabled]):focus {
-    background-color: #ddd;
-}
+    &:not([disabled]) {
+        &:hover, &:focus {
+            background-color: #ddd;
+        }
 
-.numpad-element:not([disabled]):active {
-    background-color: #bbb;
+        &:active {
+            background-color: #bbb;
+        }
+    }
 }
 
 .numpad-call {
     grid-column-start: 2;
     background-color: #76db7c;
-}
 
-.numpad-call:not([disabled]):hover, .numpad-call:not([disabled]):focus {
-    background-color: #60c567;
-}
+    &:not([disabled]) {
+        &:hover, &:focus {
+            background-color: #60c567;
+        }
 
-.numpad-call:not([disabled]):active {
-    background-color: #4caa52;
+        &:active {
+            background-color: #4caa52;
+        }
+    }
 }
 
 .numpad-call__in-call {
     background-color: #db7676;
-}
 
-.numpad-call__in-call:not([disabled]):hover, .numpad-call__in-call:not([disabled]):focus {
-    background-color: #c56060;
-}
+    &:not([disabled]) {
+        &:hover, &:focus {
+            background-color: #c56060;
+        }
 
-.numpad-call__in-call:not([disabled]):active {
-    background-color: #aa4c4c;
+        &:active {
+            background-color: #aa4c4c;
+        }
+    }
 }
 
 .numpad-element::before {

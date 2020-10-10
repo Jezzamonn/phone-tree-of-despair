@@ -1,0 +1,68 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.numpad {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 50vh;
+    column-gap: 2vh;
+    row-gap: 2vh;
+}
+
+.numpad-element {
+    position: relative;
+    background-color: #eee;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    padding: 0;
+    transition: background-color 0.2s;
+}
+
+.numpad-element:hover, .numpad-element:focus {
+    background-color: #ddd;
+}
+
+.numpad-element:active {
+    background-color: #bbb;
+}
+
+.numpad-call {
+    grid-column-start: 2;
+    background-color: #76db7c;
+}
+
+.numpad-call:hover, .numpad-call:focus {
+    background-color: #60c567;
+}
+
+.numpad-call:active {
+    background-color: #4caa52;
+}
+
+.numpad-element::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.numpad-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 6vh;
+}

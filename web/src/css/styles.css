@@ -47,6 +47,18 @@ body {
     background-color: #4caa52;
 }
 
+.numpad-call__in-call {
+    background-color: #db7676;
+}
+
+.numpad-call__in-call:hover, .numpad-call__in-call:focus {
+    background-color: #c56060;
+}
+
+.numpad-call__in-call:active {
+    background-color: #aa4c4c;
+}
+
 .numpad-element::before {
     content: '';
     display: block;
@@ -64,5 +76,15 @@ body {
     justify-content: center;
     align-items: center;
 
+    font-size: 6vh;
+    transition: transform 0.2s;
+}
+
+.numpad-call__in-call .numpad-content {
+    transform: rotate(135deg);
+}
+
+
+.numpad-content .material-icons {
     font-size: 6vh;
 }

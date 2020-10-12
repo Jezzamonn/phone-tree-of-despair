@@ -8,13 +8,17 @@ Your goal is to navigate the ~~infuriating~~ expertly designed, user-friendly ph
 
 ## How to play:
 
-# US: Call **+1 (928) 569 9118**.
-# AUS: Call **+61 2 5551 6125**.
-# Or go to [jezzamon.itch.io/phone-tree-of-despair](https://jezzamon.itch.io/phone-tree-of-despair)
+# US 🇺🇸: Call **+1 (928) 569 9118**.
+# AUS 🇦🇺: Call **+61 2 5551 6125**.
+# Web 🌐: [jezzamon.itch.io/phone-tree-of-despair](https://jezzamon.itch.io/phone-tree-of-despair)
 
 *Estimated time to completion:* ***30 minutes.***
 
+(Also there is a secret ending!!)
+
 Note: If you call one of the real numbers, this game may cost you money depending on your phone plan. Watch out for international phone call fees if you're calling from a different country.
+
+If that's a problem, you can use the web version on itch.io, which doesn't need to you make a real call :)
 
 ## The reviews are in! 🗞
 
@@ -22,9 +26,9 @@ Note: If you call one of the real numbers, this game may cost you money dependin
 
 \- My housemate, upon completing it.
 
-## Walkthrough! 🐾
+## Walkthrough 🐾
 
-If you're having trouble (or don't have the patience to figure out the full game), here's a [walkthrough](https://github.com/Jezzamonn/LD47/blob/master/dialog/walkthrough.md).
+For those who don't have the time or patience to figure out the full game, here's a [walkthrough](https://github.com/Jezzamonn/LD47/blob/master/dialog/walkthrough.md).
 
 ## Hosting costs 💸
 
@@ -44,4 +48,4 @@ All recordings were obtained during the compo time period, as per the compo rule
 # Post compo tweaks:
 
 - Fixed a typo in a URL redirect that previously gave you an error message and ended the call
-- Added a web calling interface.
+- Added an entire web calling interface!

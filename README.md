@@ -8,13 +8,13 @@ Your goal is to navigate the ~~infuriating~~ expertly designed, user-friendly ph
 
 ## How to play:
 
-# Call **+1 (928) 569 9118**.
+# US: Call **+1 (928) 569 9118**.
+# AUS: Call **+61 2 5551 6125**.
+# Or go to [jezzamon.itch.io/phone-tree-of-despair](https://jezzamon.itch.io/phone-tree-of-despair)
 
 *Estimated time to completion:* ***30 minutes.***
 
-Note: Because you're making a real phone call, this game may cost you money depending on your phone plan. Watch out for international phone call fees if you're not in the US.
-
-Stay tuned for a browser-based version that doesn't need you to make a call!
+Note: If you call one of the real numbers, this game may cost you money depending on your phone plan. Watch out for international phone call fees if you're calling from a different country.
 
 ## The reviews are in! 🗞
 
@@ -22,9 +22,13 @@ Stay tuned for a browser-based version that doesn't need you to make a call!
 
 \- My housemate, upon completing it.
 
-## Costs and stuff! 💸
+## Walkthrough! 🐾
 
-This game costs a small amount to host, so if you want to cover costs, you can send a donation of $1 via the [itch.io](https://jezzamon.itch.io/phone-tree-of-despair) page. If not, that's cool too, but if it goes viral I may have to take it down 😅
+If you're having trouble (or don't have the patience to figure out the full game), here's a [walkthrough](https://github.com/Jezzamonn/LD47/blob/master/dialog/walkthrough.md).
+
+## Hosting costs 💸
+
+This game costs a small amount to host, so if you want to help cover costs, you can send a donation via the [itch.io page](https://jezzamon.itch.io/phone-tree-of-despair). $1 will be more than enough. I've loaded it with enough credit to last a while but it's possible it'll go down if it goes viral or something 😅
 
 ## Credits ✨
 The programming and music were created entirely by me. Special thanks to those who did voice acting:
@@ -36,3 +40,8 @@ The programming and music were created entirely by me. Special thanks to those w
 - Random person yelling on the street who you can faintly hear in the background in one part.
 
 All recordings were obtained during the compo time period, as per the compo rules :)
+
+# Post compo tweaks:
+
+- Fixed a typo in a URL redirect that previously gave you an error message and ended the call
+- Added a web calling interface.

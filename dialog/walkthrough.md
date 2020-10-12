@@ -54,7 +54,7 @@ If you're struggling to find the postal codes, they are:
 - 8446
 - 2836
 
-After answering all that, you'll get the postal office address.
+After answering all that, you'll get the registration office postal code.
 
 ## Getting the date of your last renewal
 

@@ -3,6 +3,8 @@ const urlencoded = require('body-parser').urlencoded;
 const decamelize = require('decamelize');
 
 const { handleRequest } = require('./responses/common.js');
+const { generateToken } = require('./responses/token.js');
+
 const entryResponses = require('./responses/entry.js');
 const checkExtensionResponses = require('./responses/check-extension.js');
 const moreInfoResponses = require('./responses/more-info.js');
@@ -28,7 +30,7 @@ const responseGroups = [
 ]
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 
 // Parse incoming POST params with Express middleware
 app.use(urlencoded({ extended: false }));
@@ -44,6 +46,11 @@ for (const responseGroup of responseGroups) {
         console.log(`  ${path}`);
     }
 }
+
+// Bonus API Key endpoint
+// TODO: CORS??
+console.log('  /token (bonus!)');
+app.post('/token', generateToken);
 
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`)

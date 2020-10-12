@@ -28,7 +28,7 @@ If that's a problem, you can use the web version on itch.io, which doesn't need 
 
 ## Walkthrough 🐾
 
-For those who don't have the time or patience to figure out the full game, here's a [walkthrough](https://github.com/Jezzamonn/LD47/blob/master/dialog/walkthrough.md).
+For those who are having trouble (or don't have the patience to figure out the full game), here's a [walkthrough](https://github.com/Jezzamonn/LD47/blob/master/dialog/walkthrough.md)!
 
 ## Hosting costs 💸
 
@@ -45,7 +45,7 @@ The programming and music were created entirely by me. Special thanks to those w
 
 All recordings were obtained during the compo time period, as per the compo rules :)
 
-# Post compo tweaks:
+## Post compo tweaks:
 
 - Fixed a typo in a URL redirect that previously gave you an error message and ended the call
 - Added an entire web calling interface!

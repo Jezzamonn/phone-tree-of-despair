@@ -1,7 +1,12 @@
 node_modules/
 
+# No we don't want to save the twilio demo
+twilio_demo/
+
 secrets.*
 # This now contains environment variables and some secrets, so we gotta ignore it.
 app.yaml
 
 promo/misc
+
+

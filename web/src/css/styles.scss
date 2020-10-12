@@ -99,4 +99,7 @@ body {
     font-size: min(6vh, 12vw);
     min-height: 1.25em;
     line-height: 1.25;
+    max-width: 100vw;
+    overflow-wrap: break-word;
+    text-align: center;
 }

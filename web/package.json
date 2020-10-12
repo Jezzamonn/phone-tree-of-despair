@@ -37,5 +37,8 @@
     "sass": "^1.27.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "twilio-client": "^1.12.5"
   }
 }

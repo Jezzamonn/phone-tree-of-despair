@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const urlencoded = require('body-parser').urlencoded;
 const decamelize = require('decamelize');
 
@@ -50,7 +51,7 @@ for (const responseGroup of responseGroups) {
 // Bonus API Key endpoint
 // TODO: CORS??
 console.log('  /token (bonus!)');
-app.post('/token', generateToken);
+app.post('/token', cors(), generateToken);
 
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`)

@@ -104,6 +104,8 @@ function handleButtonPress(code) {
             return;
         }
 
+        connection.sendDigits(code);
+
         enteredNumbers += code;
     }
 
@@ -112,6 +114,11 @@ function handleButtonPress(code) {
 
 function startCall() {
     connection = device.connect();
+    connection.on('disconnect', () => {
+        connection = null;
+        updateUI();
+    });
+
     enteredNumbers = '';
 }
 

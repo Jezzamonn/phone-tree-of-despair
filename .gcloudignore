@@ -18,3 +18,5 @@ node_modules/
 
 static/
 upload_static.sh
+
+secrets.*

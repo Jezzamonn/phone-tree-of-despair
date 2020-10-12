@@ -1,5 +1,5 @@
 node_modules/
 
-secrets.txt
+secrets.*
 # This now contains environment variables and some secrets, so we gotta ignore it.
 app.yaml

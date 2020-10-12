@@ -16,7 +16,11 @@
 # Node.js dependencies:
 node_modules/
 
+dialog/
+promo/
 static/
-upload_static.sh
+twilio_demo/
+web/
 
+upload_static.sh
 secrets.*

@@ -1,6 +1,6 @@
 const { Device } = require("twilio-client");
 
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://stellar-ether-198321.uc.r.appspot.com';
 
 const buttonNames = [
     '1',

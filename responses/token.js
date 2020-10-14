@@ -3,15 +3,15 @@
 // the right URL.
 
 const Twilio = require("twilio");
+const { v4: uuidv4 } = require('uuid');
 
 /**
  * @param {Request} request
  * @param {Response} response
  */
 function generateToken(request, response) {
-  // Twilio says to properly auth the user but there is no auth
-  // Sorry twilio! Sorry me!
-  const identity = "anonymous";
+  // I think actually this needs to be different for each person.
+  const identity = uuidv4();
 
   const accountSid = process.env.TWILIO_ACCOUNT_SID;
   const applicationSid = process.env.TWILIO_APP_SID;

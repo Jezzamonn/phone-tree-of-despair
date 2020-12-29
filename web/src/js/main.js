@@ -35,91 +35,7 @@ function isReadyForCall() {
 }
 
 function init() {
-    const buttons = document.querySelectorAll('.numpad-element');
-    for (const [i, button] of buttons.entries()) {
-        button.addEventListener('click', () => handleButtonPress(buttonNames[i]));
-    }
-
     updateUI();
-    getAuthToken();
-}
-
-function getAuthToken() {
-    fetch(`${API_URL}/token`, { method: 'POST' })
-        .then(response => response.json())
-        .then(data => {
-            token = data['token'];
-            updateUI();
-        });
-}
-
-function setUpDevice() {
-    if (hasSetUpDevice) {
-        return;
-    }
-    // Need a token to do this!
-    if (!token) {
-        return;
-    }
-
-    console.log('Setting up device');
-
-    device.setup(token,
-        {
-            codecPreferences: ['opus', 'pcmu',],
-            fakeLocalDTMF: true,
-            debug: true,
-        });
-
-    device.on('ready', () => {
-        deviceIsReady = true;
-        // First click is always on the call button, so just start the call.
-        startCall();
-        updateUI();
-    });
-    hasSetUpDevice = true;
-}
-
-function handleButtonPress(code) {
-    console.log(code);
-
-    setUpDevice();
-
-    if (!deviceIsReady) {
-        return;
-    }
-
-    if (code == 'call') {
-        // In a call.
-        if (hasActiveCall() > 0) {
-            device.disconnectAll();
-            connection = null;
-        }
-        else {
-            startCall();
-        }
-    }
-    else {
-        if (!hasActiveCall()) {
-            return;
-        }
-
-        connection.sendDigits(code);
-
-        enteredNumbers += code;
-    }
-
-    updateUI();
-}
-
-function startCall() {
-    connection = device.connect();
-    connection.on('disconnect', () => {
-        connection = null;
-        updateUI();
-    });
-
-    enteredNumbers = '';
 }
 
 // Not that efficient to run, but efficient to implement ;)
@@ -142,9 +58,5 @@ function updateUI() {
         button.disabled = !hasCall;
     }
 }
-
-// Quick hack for debugging.
-window.device = device;
-
 
 window.onload = init;

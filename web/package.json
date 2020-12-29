@@ -23,7 +23,7 @@
     "webpack": "webpack",
     "sass": "mkdir -p build/css/ && sass src/css/styles.scss build/css/styles.css",
     "html": "mkdir -p build/ && rsync -a --delete src/index.html build/index.html",
-    "build": "npm-run-all --parallel webpack css html",
+    "build": "npm-run-all --parallel webpack sass html",
     "clean": "rm -r build/"
   },
   "author": "Jez Swanson",

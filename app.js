@@ -37,20 +37,22 @@ app.use(urlencoded({ extended: false }));
 
 // Create routes that will handle Twilio webhook requests, sent as
 // HTTP POST requests.
-console.log('Supported paths:')
+const supportedPaths = [];
+
 for (const responseGroup of responseGroups) {
     for (const responseName of Object.keys(responseGroup)) {
         const path = '/' + decamelize(responseName, '-');
         app.post(path, handleRequest(responseGroup[responseName]));
-        console.log(`  ${path}`);
+        supportedPaths.push(path);
     }
 }
 
 // Bonus API Key endpoint
 // TODO: CORS??
-console.log('  /token (bonus!)');
 app.post('/token', cors(), generateToken);
+supportedPaths.push('/token (bonus!)')
 
 module.exports = {
-    app // Visible for testing.
+    app,
+    supportedPaths,
 };

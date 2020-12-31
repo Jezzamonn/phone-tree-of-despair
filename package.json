@@ -4,7 +4,8 @@
   "description": "Ludum Dare 47",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "update-goldens": "mocha --update-goldens"
   },
   "repository": {
     "type": "git",
@@ -18,9 +19,13 @@
   "homepage": "https://github.com/Jezzamonn/LD47#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "commander": "^6.2.1",
     "cors": "^2.8.5",
     "decamelize": "^4.0.0",
     "express": "^4.17.1",
+    "mocha": "^8.2.1",
+    "supertest": "^6.0.1",
     "twilio": "^3.49.4",
     "uuid": "^8.3.1"
   }

@@ -1,5 +1,5 @@
 const { getRegistrationId, getRegistrationDate, getRegistrationPostalCode } = require('./answers');
-const { hold, playSound } = require('./common');
+const { hold, playSound, getSpeechAnswer } = require('./common');
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
 
 /**
@@ -27,7 +27,8 @@ function registration(twiml) {
  * @param {Request} request
  */
 function registrationNameResponse(twiml, request) {
-    if (!request.body.SpeechResult.toLowerCase().includes('yes')) {
+    const answer = getSpeechAnswer(request);
+    if (!answer.toLowerCase().includes('yes')) {
         registrationFail(twiml);
         return;
     }

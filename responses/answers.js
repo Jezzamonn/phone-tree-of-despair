@@ -1,21 +1,12 @@
-/**
- * @param {Request} request
- */
-function getRegistrationId(request) {
+function getRegistrationId() {
     return '54002';
 }
 
-/**
- * @param {Request} request
- */
-function getRegistrationPostalCode(request) {
+function getRegistrationPostalCode() {
     return '56789';
 }
 
-/**
- * @param {Request} request
- */
-function getRegistrationDate(request) {
+function getRegistrationDate() {
     return '20191126';
 }
 

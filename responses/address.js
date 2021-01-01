@@ -20,11 +20,9 @@ function address(twiml) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
-function addressCanWait(twiml, request) {
-    const answer = getSpeechAnswer(request);
-    if (!answer.startsWith('n') && !answer.includes('no')) {
+function addressCanWait(twiml, {speech=''}={}) {
+    if (!speech.startsWith('n') && !speech.includes('no')) {
         // twiml.say(`Ok great. I'll put you on hold.`);
         playSound(twiml, 'addressing/addressing-can-wait.mp3');
         hold(twiml);
@@ -48,11 +46,9 @@ function addressCanWait(twiml, request) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
-function addressClue1(twiml, request) {
-    const answer = getSpeechAnswer(request);
-    if (!answer.includes('coffee')) {
+function addressClue1(twiml, {speech=''}={}) {
+    if (!speech.includes('coffee')) {
         addressClueWrong(twiml);
         return;
     }
@@ -71,11 +67,9 @@ function addressClue1(twiml, request) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
-function addressClue3(twiml, request) {
-    const answer = getSpeechAnswer(request);
-    if (!answer.includes('oxygen')) {
+function addressClue3(twiml, {speech=''}={}) {
+    if (!speech.includes('oxygen')) {
         addressClueWrong(twiml);
         return;
     }
@@ -95,11 +89,9 @@ function addressClue3(twiml, request) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
-function addressClue4(twiml, request) {
-    const answer = getSpeechAnswer(request);
-    if (!answer.includes('silent')) {
+function addressClue4(twiml, {speech=''}={}) {
+    if (!speech.includes('silent')) {
         addressClueWrong(twiml);
         return;
     }

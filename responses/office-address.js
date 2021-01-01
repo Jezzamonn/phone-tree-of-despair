@@ -19,10 +19,9 @@ function officeAddress(twiml) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
-function officeAddress2(twiml, request) {
-    if (request.body.Digits != '82601') {
+function officeAddress2(twiml, {digits=''}={}) {
+    if (digits != '82601') {
         officeAddressWrong(twiml);
         return;
     }
@@ -42,10 +41,9 @@ function officeAddress2(twiml, request) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
-function officeAddress3(twiml, request) {
-    if (request.body.Digits != '8446') {
+function officeAddress3(twiml, {digits=''}={}) {
+    if (digits != '8446') {
         officeAddressWrong(twiml);
         return;
     }
@@ -64,10 +62,9 @@ function officeAddress3(twiml, request) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
-function officeAddress4(twiml, request) {
-    if (request.body.Digits != '2836') {
+function officeAddress4(twiml, {digits=''}={}) {
+    if (digits != '2836') {
         officeAddressWrong(twiml);
         return;
     }

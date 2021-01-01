@@ -1,10 +1,16 @@
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
 
+/**
+ * Handles a request from twilio
+ */
 function handleRequest(fn) {
     return (request, response) => {
         const twiml = new VoiceResponse();
 
-        fn(twiml, request, response);
+        const digits = request.body.Digits || '';
+        const speech = (request.body.SpeechResult || '').toLowerCase();
+
+        fn(twiml, {digits: digits, speech: speech});
 
         response.type('text/xml');
         response.send(twiml.toString());
@@ -30,7 +36,6 @@ function hold(twiml) {
  * @param {Request} request
  */
 function getSpeechAnswer(request) {
-    console.log(request.body.SpeechResult);
     return (request.body.SpeechResult || '').toLowerCase();
 }
 

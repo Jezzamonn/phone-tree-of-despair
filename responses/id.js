@@ -19,15 +19,13 @@ function id(twiml) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
-function idName1(twiml, request) {
-    const answer = getSpeechAnswer(request);
-    if (answer.includes('james') && answer.includes('smith')) {
+function idName1(twiml, {speech=''}={}) {
+    if (speech.includes('james') && speech.includes('smith')) {
         idNameCorrect(twiml);
         return;
     }
-    if (answer == '') {
+    if (speech == '') {
         twiml.redirect('/id-name-no-response');
         return;
     }
@@ -47,15 +45,13 @@ function idName1(twiml, request) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
-function idName2(twiml, request) {
-    const answer = getSpeechAnswer(request);
-    if (answer.includes('james') && answer.includes('smith')) {
+function idName2(twiml, {speech=''}={}) {
+    if (speech.includes('james') && speech.includes('smith')) {
         idNameCorrect(twiml);
         return;
     }
-    if (answer == '') {
+    if (speech == '') {
         twiml.redirect('/id-name-no-response');
         return;
     }
@@ -79,8 +75,8 @@ function idNameCorrect(twiml) {
     twiml.redirect('./id-challenge-wrong');
 }
 
-function idChallenge2(twiml, request) {
-    if (request.body.Digits != '2438') {
+function idChallenge2(twiml, {digits=''}={}) {
+    if (digits != '2438') {
         idChallengeWrong(twiml);
         return;
     }
@@ -97,8 +93,8 @@ function idChallenge2(twiml, request) {
     twiml.redirect('./id-challenge-wrong');
 }
 
-function idChallenge3(twiml, request) {
-    if (request.body.Digits != '612') {
+function idChallenge3(twiml, {digits=''}={}) {
+    if (digits != '612') {
         idChallengeWrong(twiml);
         return;
     }
@@ -115,8 +111,8 @@ function idChallenge3(twiml, request) {
     twiml.redirect('./id-challenge-wrong');
 }
 
-function idChallenge4(twiml, request) {
-    if (request.body.Digits != '97648') {
+function idChallenge4(twiml, {digits=''}={}) {
+    if (digits != '97648') {
         idChallengeWrong(twiml);
         return;
     }

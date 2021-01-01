@@ -24,11 +24,9 @@ function registration(twiml) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
-function registrationNameResponse(twiml, request) {
-    const answer = getSpeechAnswer(request);
-    if (!answer.toLowerCase().includes('yes')) {
+function registrationNameResponse(twiml, {speech=''}={}) {
+    if (!speech.toLowerCase().includes('yes')) {
         registrationFail(twiml);
         return;
     }
@@ -46,10 +44,9 @@ function registrationNameResponse(twiml, request) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
-function registrationIdResponse(twiml, request) {
-    if (request.body.Digits != getRegistrationId(request)) {
+function registrationIdResponse(twiml, {digits=''}={}) {
+    if (digits != getRegistrationId()) {
         registrationIncorrect(twiml);
         return;
     }
@@ -66,10 +63,9 @@ function registrationIdResponse(twiml, request) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
-function registrationAddressResponse(twiml, request) {
-    if (request.body.Digits != getRegistrationPostalCode(request)) {
+function registrationAddressResponse(twiml, {digits=''}={}) {
+    if (digits != getRegistrationPostalCode()) {
         registrationIncorrect(twiml);
         return;
     }
@@ -86,10 +82,9 @@ function registrationAddressResponse(twiml, request) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
-function registrationDateResponse(twiml, request) {
-    if (request.body.Digits != getRegistrationDate(request)) {
+function registrationDateResponse(twiml, {digits=''}={}) {
+    if (digits != getRegistrationDate()) {
         registrationIncorrect(twiml);
         return;
     }
@@ -108,24 +103,23 @@ function registrationDateResponse(twiml, request) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
-function registrationRatingResponse(twiml, request) {
-    if (request.body.Digits == '4' ||
-        request.body.Digits == '5') {
+function registrationRatingResponse(twiml, {digits=''}={}) {
+    if (digits == '4' ||
+        digits == '5') {
         twiml.say(`That's very nice of you to say that. Thank you for your rating.`);
         twiml.pause();
         twiml.redirect('/victory1');
         return;
     }
-    if (request.body.Digits == '2' ||
-        request.body.Digits == '3') {
+    if (digits == '2' ||
+        digits == '3') {
         twiml.say('I see. Thank you for your rating.');
         twiml.pause();
         twiml.redirect('/victory1');
         return;
     }
-    if (request.body.Digits == '1') {
+    if (digits == '1') {
         twiml.say('How dare you.');
         twiml.pause();
         twiml.redirect('/victory1');
@@ -143,7 +137,6 @@ function registrationRatingResponse(twiml, request) {
 
 /**
  * @param {VoiceResponse} twiml
- * @param {Request} request
  */
 function registrationIncorrect(twiml) {
     twiml.say("Sorry, that doesn't look correct. If you need to look up information about your registration, try contacting the other departments. You can find their extension codes by accessing the extension directory by pressing 1 2 3 at the main menu. I'll transfer you there now.");

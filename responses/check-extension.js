@@ -4,11 +4,10 @@ const { hold, playSound } = require('./common');
 
 /**
  * @param {VoiceResponse} twiml
- * @param {express.Request} request
  */
-function checkExtension(twiml, request) {
+function checkExtension(twiml, {digits=''}={}) {
     // If the user entered digits, process their request
-    switch (request.body.Digits) {
+    switch (digits) {
         case '111':
             twiml.redirect('/registration');
             break;

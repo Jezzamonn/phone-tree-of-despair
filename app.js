@@ -3,8 +3,8 @@ const cors = require('cors');
 const urlencoded = require('body-parser').urlencoded;
 const decamelize = require('decamelize');
 
-const { handleRequest } = require('./responses/common.js');
-const { generateToken } = require('./responses/token.js');
+const { handleRequest } = require('./twilio/twilio-request.js');
+const { generateToken } = require('./twilio/token.js');
 
 const entryResponses = require('./responses/entry.js');
 const checkExtensionResponses = require('./responses/check-extension.js');

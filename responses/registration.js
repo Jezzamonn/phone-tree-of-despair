@@ -1,154 +1,127 @@
 const { getRegistrationId, getRegistrationDate, getRegistrationPostalCode } = require('./answers');
-const { hold, playSound, getSpeechAnswer } = require('./common');
-const VoiceResponse = require('twilio').twiml.VoiceResponse;
+const { ActionList } = require('../model/action-list');
 
-/**
- * @param {VoiceResponse} twiml
- */
-function registration(twiml) {
-    twiml.say('Welcome to the registration office. May I have your name?');
-    twiml.pause();
-    twiml.pause();
-    twiml.pause();
-    const gatherNode = twiml.gather({
-        input: 'speech',
-        action: '/registration-name-response',
-        timeout: 3,
-        hints: 'yes, no',
-    });
-    gatherNode.say('I got "James Smith", is that correct?');
-    gatherNode.pause();
-
-    twiml.redirect('./registration-fail');
+function registration() {
+    return new ActionList()
+        .say('Welcome to the registration office. May I have your name?')
+        .pause()
+        .pause()
+        .pause()
+        .getSpeech({
+            responseDestination: '/registration-name-response',
+            hints: ['yes', 'no'],
+            timeout: 3,
+            whileWaiting: new ActionList()
+                .say('I got "James Smith", is that correct?')
+                .pause(),
+        })
+        .redirect('./registration-fail');
 };
 
-/**
- * @param {VoiceResponse} twiml
- */
-function registrationNameResponse(twiml, {speech=''}={}) {
+function registrationNameResponse({speech=''}={}) {
     if (!speech.toLowerCase().includes('yes')) {
-        registrationFail(twiml);
-        return;
+        return registrationFail();
     }
 
-    twiml.say("Great. It looks like you're trying to renew your registration. I'll need three things from you: Your registration ID, your registration office address, and the date of your last renewal.");
-    const gatherNode = twiml.gather({
-        input: 'dtmf',
-        action: '/registration-id-response',
-        numDigits: 5,
-        timeout: 10,
-    });
-    gatherNode.say('First, key in your 5 digit registration ID.');
-    twiml.redirect('/registration-incorrect');
+    return new ActionList()
+        .say("Great. It looks like you're trying to renew your registration. I'll need three things from you: Your registration ID, your registration office address, and the date of your last renewal.")
+        .getDigits({
+            responseDestination: '/registration-id-response',
+            numDigits: 5,
+            timeout: 10,
+            whileWaiting: new ActionList()
+                .say('First, key in your 5 digit registration ID.'),
+        })
+        .redirect('/registration-incorrect');
 };
 
-/**
- * @param {VoiceResponse} twiml
- */
-function registrationIdResponse(twiml, {digits=''}={}) {
+function registrationIdResponse({digits=''}={}) {
     if (digits != getRegistrationId()) {
-        registrationIncorrect(twiml);
-        return;
+        return registrationIncorrect();
     }
 
-    const gatherNode = twiml.gather({
-        input: 'dtmf',
-        action: '/registration-address-response',
-        numDigits: 5,
-        timeout: 10,
-    });
-    gatherNode.say('Ok. Now key in the 5 digit postal code for the registration office.');
-    twiml.redirect('/registration-incorrect');
+    return new ActionList()
+        .getDigits({
+            responseDestination: '/registration-address-response',
+            numDigits: 5,
+            timeout: 10,
+            whileWaiting: new ActionList()
+                .say('Ok. Now key in the 5 digit postal code for the registration office.'),
+        })
+        .redirect('/registration-incorrect');
 };
 
-/**
- * @param {VoiceResponse} twiml
- */
-function registrationAddressResponse(twiml, {digits=''}={}) {
+function registrationAddressResponse({digits=''}={}) {
     if (digits != getRegistrationPostalCode()) {
-        registrationIncorrect(twiml);
-        return;
+        return registrationIncorrect();
     }
 
-    const gatherNode = twiml.gather({
-        input: 'dtmf',
-        action: '/registration-date-response',
-        numDigits: 8,
-        timeout: 10,
-    });
-    gatherNode.say('Ok. Now key in the date of your last renewal. First enter the year, then the month, then the day.');
-    twiml.redirect('/registration-incorrect');
-};
+    return new ActionList()
+        .getDigits({
+            responseDestination: '/registration-date-response',
+            numDigits: 8,
+            timeout: 10,
+            whileWaiting: new ActionList()
+                .say('Ok. Now key in the date of your last renewal. First enter the year, then the month, then the day.'),
+        })
+        .redirect('/registration-incorrect');
+}
 
-/**
- * @param {VoiceResponse} twiml
- */
-function registrationDateResponse(twiml, {digits=''}={}) {
+function registrationDateResponse({digits=''}={}) {
     if (digits != getRegistrationDate()) {
-        registrationIncorrect(twiml);
-        return;
+        return registrationIncorrect();
     }
 
-    twiml.say("Alright, that all looks correct! Your registration is now renewed. Before you leave, can you rate your customer experience today?");
-
-    const gatherNode = twiml.gather({
-        input: 'dtmf',
-        action: '/registration-rating-response',
-        numDigits: 1,
-        timeout: 5,
-    });
-    gatherNode.say('Please enter a number from 1 to 5.');
-    twiml.redirect('/registration-rating-response');
+    return new ActionList()
+        .say("Alright, that all looks correct! Your registration is now renewed. Before you leave, can you rate your customer experience today?")
+        .getDigits({
+            responseDestination: '/registration-rating-response',
+            numDigits: 1,
+            timeout: 5,
+            whileWaiting: new ActionList()
+                .say('Please enter a number from 1 to 5.'),
+        })
+        .redirect('/registration-rating-response');
 };
 
-/**
- * @param {VoiceResponse} twiml
- */
-function registrationRatingResponse(twiml, {digits=''}={}) {
+function registrationRatingResponse({digits=''}={}) {
     if (digits == '4' ||
         digits == '5') {
-        twiml.say(`That's very nice of you to say that. Thank you for your rating.`);
-        twiml.pause();
-        twiml.redirect('/victory1');
-        return;
+        return new ActionList()
+            .say(`That's very nice of you to say that. Thank you for your rating.`)
+            .pause()
+            .redirect('/victory1');
     }
     if (digits == '2' ||
         digits == '3') {
-        twiml.say('I see. Thank you for your rating.');
-        twiml.pause();
-        twiml.redirect('/victory1');
-        return;
+        return new ActionList()
+            .say('I see. Thank you for your rating.')
+            .pause()
+            .redirect('/victory1');
     }
     if (digits == '1') {
-        twiml.say('How dare you.');
-        twiml.pause();
-        twiml.redirect('/victory1');
-        return;
+        return new ActionList()
+            .say('How dare you.')
+            .pause()
+            .redirect('/victory1');
     }
 
-    twiml.say('Error. That is not a number from 1 to 5. Error. Error.');
-    playSound(twiml, 'kill.mp3');
-    twiml.redirect('/victory2');
-    // twiml.say('Congrations, you have killed the automated voice service!');
-    // twiml.pause();
-
-    // twiml.say("This was Phone Tree of Despair, a game made for Ludum Dare 47. I hope you enjoyed it! I'm Jez Swanson, known as jezzamonn on twitter. If you entered Ludum Dare, please give the game a rating on the Ludum Dare website. You can find the link at jezzamon dot itch dot io. Congrats again on winning! Good bye!");
+    return new ActionList()
+        .say('Error. That is not a number from 1 to 5. Error. Error.')
+        .play('kill.mp3')
+        .redirect('/victory2');
 };
 
-/**
- * @param {VoiceResponse} twiml
- */
-function registrationIncorrect(twiml) {
-    twiml.say("Sorry, that doesn't look correct. If you need to look up information about your registration, try contacting the other departments. You can find their extension codes by accessing the extension directory by pressing 1 2 3 at the main menu. I'll transfer you there now.");
-    twiml.redirect('/entry');
+function registrationIncorrect() {
+    return new ActionList()
+        .say("Sorry, that doesn't look correct. If you need to look up information about your registration, try contacting the other departments. You can find their extension codes by accessing the extension directory by pressing 1 2 3 at the main menu. I'll transfer you there now.")
+        .redirect('/entry');
 }
 
-/**
- * @param {VoiceResponse} twiml
- */
-function registrationFail(twiml) {
-    twiml.say('Sorry about that. Please hold');
-    hold(twiml);
+function registrationFail() {
+    return new ActionList()
+        .say('Sorry about that. Please hold')
+        .hold();
 };
 
 module.exports = {

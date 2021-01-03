@@ -1,10 +1,5 @@
-const { playSound } = require('./common');
+const { ActionList } = require('../model/action-list');
 
-const VoiceResponse = require('twilio').twiml.VoiceResponse;
-
-/**
- * @param {VoiceResponse} twiml
- */
 function moreInfo(twiml) {
     // twiml.say(
     //     "Once again, welcome to the Phone Tree of Despair. This is a game made for loo dum dar ray 47 by Jez Swanson.");
@@ -25,9 +20,9 @@ function moreInfo(twiml) {
     // twiml.say(
     //     "Alright, good luck!");
     // twiml.pause();
-    playSound(twiml, 'more-info.mp3');
-
-    twiml.redirect('/entry');
+    return new ActionList()
+        .play('more-info.mp3')
+        .redirect('/entry');
 }
 
 module.exports = {

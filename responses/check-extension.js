@@ -1,67 +1,62 @@
-const express = require('express');
-const VoiceResponse = require('twilio').twiml.VoiceResponse;
-const { hold, playSound } = require('./common');
+const { ActionList } = require('../model/action-list');
 
-/**
- * @param {VoiceResponse} twiml
- */
-function checkExtension(twiml, {digits=''}={}) {
+function checkExtension({digits=''}={}) {
     // If the user entered digits, process their request
     switch (digits) {
         case '111':
-            twiml.redirect('/registration');
-            break;
+            return new ActionList()
+                .redirect('/registration');
         case '123':
-            twiml.redirect('/directory');
-            break;
+            return new ActionList()
+                .redirect('/directory');
         case '575':
-            twiml.redirect('/id');
-            break;
+            return new ActionList()
+                .redirect('/id');
         case '818':
-            twiml.redirect('/address');
-            break;
+            return new ActionList()
+                .redirect('/address');
         case '828':
-            twiml.redirect('/office-address');
-            break;
+            return new ActionList()
+                .redirect('/office-address');
 
         // Noise / datetime section
         case '303':
-            playSound(twiml, 'noise/dtmf.mp3');
-            break;
+            return new ActionList()
+                .play('noise/dtmf.mp3');
         case '313':
-            playSound(twiml, 'noise/mumbling.mp3');
-            break;
+            return new ActionList()
+                .play('noise/mumbling.mp3');
         case '323':
-            playSound(twiml, 'noise/oof.mp3');
-            break;
+            return new ActionList()
+                .play('noise/oof.mp3');
         case '333':
-            playSound(twiml, 'noise/hello.mp3');
-            break;
+            return new ActionList()
+                .play('noise/hello.mp3');
         case '343':
-            playSound(twiml, 'noise/traffic.mp3');
-            break;
+            return new ActionList()
+                .play('noise/traffic.mp3');
         case '353':
-            twiml.redirect('/datetime');
-            break;
+            return new ActionList()
+                .redirect('/datetime');
         case '363':
-            playSound(twiml, 'noise/wahwahnoise.mp3');
-            break;
+            return new ActionList()
+                .play('noise/wahwahnoise.mp3');
         case '373':
-            playSound(twiml, 'noise/mumbling-distorted.mp3');
-            break;
+            return new ActionList()
+                .play('noise/mumbling-distorted.mp3');
         case '383':
-            playSound(twiml, 'noise/crinkling.mp3');
-            break;
+            return new ActionList()
+                .play('noise/crinkling.mp3');
         case '393':
-            playSound(twiml, 'noise/chickensound.mp3');
-            break;
+            return new ActionList()
+                .play('noise/chickensound.mp3');
         case '364':
-            twiml.say("That's Bob's office");
-            break;
+            return new ActionList()
+                .say("That's Bob's office");
         default:
-            twiml.say("Sorry, that's not a valid response. Please hold.");
-            hold(twiml);
-            break;
+            return new ActionList()
+                .say("Sorry, that's not a valid response. Please hold.")
+                .hold();
     }
 };
 

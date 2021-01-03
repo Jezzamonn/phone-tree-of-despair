@@ -1,23 +1,17 @@
-const { playSound } = require('./common');
+const { ActionList } = require('../model/action-list');
 
-const VoiceResponse = require('twilio').twiml.VoiceResponse;
-
-/**
- * @param {VoiceResponse} twiml
- */
-function victory1(twiml) {
-    playSound(twiml, 'victory/victory-intro.mp3');
-    playSound(twiml, 'victory/victory-ending1.mp3');
-    playSound(twiml, 'victory/victory-goodbye.mp3');
+function victory1() {
+    return new ActionList()
+        .play('victory/victory-intro.mp3')
+        .play('victory/victory-ending1.mp3')
+        .play('victory/victory-goodbye.mp3');
 }
 
-/**
- * @param {VoiceResponse} twiml
- */
-function victory2(twiml) {
-    playSound(twiml, 'victory/victory-intro.mp3');
-    playSound(twiml, 'victory/victory-ending2.mp3');
-    playSound(twiml, 'victory/victory-goodbye.mp3');
+function victory2() {
+    return new ActionList()
+        .play('victory/victory-intro.mp3')
+        .play('victory/victory-ending2.mp3')
+        .play('victory/victory-goodbye.mp3');
 }
 
 module.exports = {

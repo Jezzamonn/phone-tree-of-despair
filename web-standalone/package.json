@@ -1,0 +1,44 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "Web interface to Phone Tree of Despair",
+  "watch": {
+    "webpack": "src/js/**",
+    "html": {
+      "patterns": [
+        "src/index.html"
+      ],
+      "extensions": "html"
+    },
+    "sass": {
+      "patterns": [
+        "src/css/**"
+      ],
+      "extensions": "scss"
+    }
+  },
+  "scripts": {
+    "reload": "reload -b -d build",
+    "watch": "npm-watch",
+    "webpack": "webpack",
+    "sass": "mkdir -p build/css/ && sass src/css/styles.scss build/css/styles.css",
+    "html": "mkdir -p build/ && rsync -a --delete src/index.html build/index.html",
+    "build": "npm-run-all --parallel webpack sass html",
+    "clean": "rm -r build/"
+  },
+  "author": "Jez Swanson",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "babel-loader": "^8.1.0",
+    "npm-run-all": "^4.1.5",
+    "npm-watch": "^0.7.0",
+    "reload": "^3.1.1",
+    "sass": "^1.27.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "twilio-client": "^1.12.5"
+  }
+}

@@ -1,0 +1,136 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
+}
+
+p {
+    font-size: larger;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.numpad {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: min(50vh, 95vw);
+    column-gap: min(2vh, 4vw);
+    row-gap: min(2vh, 4vw);
+}
+
+.numpad-element {
+    position: relative;
+    background-color: #eee;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    padding: 0;
+    transition: background-color 0.2s;
+
+    &:not([disabled]) {
+        &:hover, &:focus {
+            background-color: #ddd;
+        }
+
+        &:active {
+            background-color: #bbb;
+        }
+    }
+}
+
+.numpad-call {
+    grid-column-start: 2;
+    background-color: #76db7c;
+
+    &:not([disabled]) {
+        &:hover, &:focus {
+            background-color: #60c567;
+        }
+
+        &:active {
+            background-color: #4caa52;
+        }
+    }
+}
+
+.numpad-call__in-call {
+    background-color: #db7676;
+
+    &:not([disabled]) {
+        &:hover, &:focus {
+            background-color: #c56060;
+        }
+
+        &:active {
+            background-color: #aa4c4c;
+        }
+    }
+}
+
+.numpad-element::before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+}
+
+.numpad-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: min(6vh, 12vw);
+    transition: transform 0.2s;
+}
+
+.numpad-call__in-call .numpad-content {
+    transform: rotate(135deg);
+}
+
+
+.numpad-content .material-icons {
+    font-size: min(6vh, 12vw);
+}
+
+.entered-numbers {
+    font-size: min(6vh, 12vw);
+    min-height: 1.25em;
+    line-height: 1.25;
+    max-width: 100vw;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+.unavailable-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup {
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 600px;
+    max-width: 80vw;
+
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}

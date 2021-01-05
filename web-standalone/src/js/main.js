@@ -1,6 +1,4 @@
-const { Device } = require("twilio-client");
-
-const API_URL = 'https://stellar-ether-198321.uc.r.appspot.com';
+const { Call } = require('./call.js');
 
 const buttonNames = [
     '1',
@@ -18,24 +16,71 @@ const buttonNames = [
     'call',
 ];
 
-const device = new Device();
-let token = null;
-let hasSetUpDevice = false;
-let deviceIsReady = false;
+let isSpeechApiAvailable = true;
 
-let connection = null;
 let enteredNumbers = '';
 
+let call = new Call();
+call.onEnd = () => updateUI();
+
 function hasActiveCall() {
-    return connection != null;
+    return call.isActive();
 }
 
 function isReadyForCall() {
-    return token != null;
+    return isSpeechApiAvailable;
 }
 
 function init() {
+    const buttons = document.querySelectorAll('.numpad-element');
+    for (const [i, button] of buttons.entries()) {
+        button.addEventListener('click', () => handleButtonPress(buttonNames[i]));
+    }
+
     updateUI();
+}
+
+
+function handleButtonPress(code) {
+    console.log(code);
+
+    if (!isReadyForCall()) {
+        return;
+    }
+
+    if (code == 'call') {
+        // In a call.
+        if (hasActiveCall()) {
+            endCall();
+        }
+        else {
+            startCall();
+        }
+    }
+    else {
+        if (!hasActiveCall()) {
+            return;
+        }
+
+        sendDigit(code);
+
+        enteredNumbers += code;
+    }
+
+    updateUI();
+}
+
+function startCall() {
+    call.start();
+    enteredNumbers = '';
+}
+
+function endCall() {
+    call.end();
+}
+
+function sendDigit(code) {
+    call.addDigit(code);
 }
 
 // Not that efficient to run, but efficient to implement ;)

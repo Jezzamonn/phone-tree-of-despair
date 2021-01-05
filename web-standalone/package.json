@@ -15,6 +15,12 @@
         "src/css/**"
       ],
       "extensions": "scss"
+    },
+    "static": {
+      "patterns": [
+        "../static/**"
+      ],
+      "extensions": "mp3"
     }
   },
   "scripts": {
@@ -23,6 +29,7 @@
     "webpack": "webpack",
     "sass": "mkdir -p build/css/ && sass src/css/styles.scss build/css/styles.css",
     "html": "mkdir -p build/ && rsync -a --delete src/index.html build/index.html",
+    "static": "mkdir -p build/static && rsync -a --delete ../static/ build/static",
     "build": "npm-run-all --parallel webpack sass html",
     "clean": "rm -r build/"
   },
@@ -39,6 +46,7 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
+    "decamelize": "^4.0.0",
     "twilio-client": "^1.12.5"
   }
 }

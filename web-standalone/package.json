@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "web-standalone",
   "version": "1.0.0",
   "description": "Web interface to Phone Tree of Despair",
   "watch": {

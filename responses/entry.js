@@ -3,7 +3,7 @@ const { ActionList } = require('../model/action-list');
 function entry() {
     return new ActionList()
         .getDigits({
-            responseDestination: 'check-extension',
+            responseDestination: '/check-extension',
             numDigits: 3,
             timeout: 5,
             whileWaiting: new ActionList()

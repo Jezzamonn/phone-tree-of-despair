@@ -60,7 +60,7 @@ function setVoiceResponse(twiml, actionList) {
                 twiml.redirect(action.destination)
                 break;
             case 'pause':
-                twiml.pause();
+                twiml.pause({length: action.length});
                 break;
         }
     }

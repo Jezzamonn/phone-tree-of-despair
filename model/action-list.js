@@ -53,8 +53,8 @@ class ActionList {
         return this;
     }
 
-    pause() {
-        this.actions.push(new PauseAction());
+    pause({length=1}={}) {
+        this.actions.push(new PauseAction({length}));
         return this;
     }
 }
@@ -112,8 +112,9 @@ class RedirectAction {
 }
 
 class PauseAction {
-    constructor() {
+    constructor({length}) {
         this.type = 'pause';
+        this.length = length;
     }
 }
 

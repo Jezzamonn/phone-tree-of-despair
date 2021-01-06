@@ -19,7 +19,7 @@ class Call {
 
     setVoices(defaultVoice, otherVoices) {
         this.defaultVoice = defaultVoice;
-        this.otherVoices = otherVoices;
+        this.voices = otherVoices;
     }
 
     isActive() {

@@ -3,22 +3,19 @@ const { getResponse } = require('./responses.js');
 
 class Call {
     constructor() {
-        // Array of {actionList, actionIndex} objects. Last one is the top of the stack.
-        // The whole stack is replaced when redirecting.
-        /** @type {!Array<{actionList: !ActionList, actionIndex: number}} */
-        this.actionStack = [];
-
-        /** @type {HTMLAudioElement} */
-        this.currentAudio = null;
+        this.actionQueue = [];
 
         this.getDigitsAction = null;
         this.currentDigits = '';
+
+        // Function that when called, will clean up everthing that needs to be cleaned up for this action.
+        this.cleanUpLastAction = () => {};
 
         this.onEnd = () => {};
     }
 
     isActive() {
-        return this.actionStack.length > 0;
+        return this.actionQueue.length > 0;
     }
 
     start() {
@@ -26,15 +23,16 @@ class Call {
     }
 
     end() {
-        if (this.currentAudio) {
-            // Stops the sound.
-            this.currentAudio.pause();
-            this.currentAudio = null;
-        }
-        this.actionStack = [];
-        this.getDigitsAction = null;
+        this.cleanUpActionQueue();
 
         this.onEnd();
+    }
+
+    cleanUpActionQueue() {
+        this.cleanUpLastAction();
+        this.actionQueue = [];
+        this.getDigitsAction = null;
+        this.currentDigits = '';
     }
 
     addDigit(digit) {
@@ -43,20 +41,21 @@ class Call {
         }
         this.currentDigits += digit;
         console.log(`currentDigits = ${this.currentDigits}`);
+
         if (this.currentDigits.length == this.getDigitsAction.numDigits) {
-            const dest = this.getDigitsAction.responseDestination;
-            this.getDigitsAction = null;
-            this.setAction(dest);
+            this.setAction(
+                this.getDigitsAction.responseDestination,
+                {digits: this.currentDigits}
+            );
         }
     }
 
-    setAction(path) {
-        console.log(`action: ${path}`);
-        const actionList = getResponse(path);
-        this.actionStack = [{
-            actionList,
-            actionIndex: -1,
-        }]
+    setAction(path, {digits='', speech=''}={}) {
+        this.cleanUpActionQueue();
+
+        console.log(`action: ${path}, digits=${digits}, speech=${speech}`);
+        this.actionQueue = getResponse(path, {digits, speech}).actions;
+        this.actionQueue.push({type: 'end'});
 
         this.nextAction();
     }
@@ -66,86 +65,83 @@ class Call {
             return;
         }
 
-        // Reset stuff
-        if (this.currentAudio) {
-            this.currentAudio.onended = null;
-            this.currentAudio = null;
-        }
+        this.cleanUpLastAction();
+        this.cleanUpLastAction = () => {};
 
-        let actionInfo;
-        while (true) {
-            actionInfo = this.actionStack[this.actionStack.length-1];
-            actionInfo.actionIndex++;
-            if (actionInfo.actionIndex < actionInfo.actionList.actions.length) {
-                break;
-            }
+        const action = this.actionQueue.shift();
 
-            // Reached the end of the action list, try pop out to the other one
-            this.actionStack.pop();
-
-            // Check if we're in the middle of gathering something.
-            // If so, wait for the timeout.
-            if (this.getDigitsAction != null) {
-                setTimeout(() => {
-                    this.getDigitsAction = null;
-                    this.nextAction();
-                }, this.getDigitsAction.timeout);
-                return;
-            }
-
-            if (this.actionStack.length == 0) {
-                this.end();
-                return;
-            }
-        }
-
-        const {actionList, actionIndex} = actionInfo;
-        const action = actionList.actions[actionIndex];
-
-        console.log(`action ${actionIndex}: ${action.type}`);
+        console.log(`action ${action.type}`);
         switch (action.type) {
-            case 'say':
-                // Can't do this. :(
-                // Just log it and delay
+            case 'say': {
+                // Can't do this on my computer because the voice synths are broken.
+                // So just log it and delay
                 console.log(`say: ${action.text}`);
-                setTimeout(() => this.nextAction(), 5000);
+                const handle = setTimeout(() => this.nextAction(), 5000);
+
+                this.cleanUpLastAction = () => {
+                    clearTimeout(handle);
+                }
                 break;
-            case 'play':
+            }
+            case 'play': {
                 const basePath = 'static/'
                 const fullPath = basePath + action.soundPath;
 
-                this.currentAudio = new Audio(fullPath);
-                this.currentAudio.onended = () => this.nextAction();
-                this.currentAudio.play();
+                const audio = new Audio(fullPath);
+                audio.onended = () => this.nextAction();
+                audio.play();
+
+                this.cleanUpLastAction = () => {
+                    audio.onended = null;
+                    audio.pause();
+                }
                 break;
-            case 'getSpeech':
-                // skip
-                this.nextAction();
-                break;
-            case 'getDigits':
+            }
+            case 'getDigits': {
                 if (this.getDigitsAction != null) {
                     console.error('We already have a getDigitsAction. Should just be one.');
                 }
                 this.currentDigits = '';
                 this.getDigitsAction = action;
-                // Timeout happens AFTER the while waiting list is exhausted.
+
                 let whileWaiting = action.whileWaiting;
                 if (whileWaiting == null) {
                     whileWaiting = new ActionList();
                 }
+                // A little dodge, but we're inserting some extra actions of our own.
+                this.actionQueue.unshift(
+                    ...whileWaiting.actions,
+                    {type: 'pause', length: action.timeout},
+                    {type: 'endGather'});
 
-                this.actionStack.push({
-                    actionList: action.whileWaiting,
-                    actionIndex: -1,
-                });
                 this.nextAction();
                 break;
-            case 'redirect':
+            }
+            case 'redirect': {
                 this.setAction(action.destination);
                 break;
-            case 'pause':
-                setTimeout(() => this.nextAction(), 1000);
+            }
+            case 'pause': {
+                const handle = setTimeout(() => this.nextAction(), 1000);
+
+                this.cleanUpLastAction = () => {
+                    clearTimeout(handle);
+                }
                 break;
+            }
+            case 'endGather': {
+                this.getDigitsAction = null;
+                this.nextAction();
+                break;
+            }
+            case 'end': {
+                this.end();
+                break;
+            }
+            default: {
+                // Skip.
+                this.nextAction();
+            }
         }
     }
 }

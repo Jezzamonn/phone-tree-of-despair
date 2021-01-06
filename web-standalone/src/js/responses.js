@@ -34,8 +34,9 @@ for (const responseGroup of responseGroups) {
     }
 }
 
-function getResponse(path) {
-    return responses[path]();
+function getResponse(path, {digits='', speech=''}={}) {
+    const responseFn = responses[path];
+    return responseFn({digits, speech});
 }
 
 module.exports = {

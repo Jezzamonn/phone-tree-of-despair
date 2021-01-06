@@ -16,7 +16,7 @@ const buttonNames = [
     'call',
 ];
 
-let isSpeechApiAvailable = true;
+let isSpeechApiAvailable = false;
 
 let enteredNumbers = '';
 
@@ -37,6 +37,31 @@ function init() {
         button.addEventListener('click', () => handleButtonPress(buttonNames[i]));
     }
 
+    speechSynthesis.onvoiceschanged = () => {
+        setVoices(speechSynthesis.getVoices());
+    }
+    setVoices(speechSynthesis.getVoices());
+
+    updateUI();
+}
+
+function setVoices(voices) {
+    if (voices.length == 0) {
+        return;
+    }
+    let femaleVoice = null;
+    let maleVoice = null;
+    for (const voice of voices) {
+        if (voice.name.includes('Female')) {
+            femaleVoice = voice;
+        }
+        if (voice.name.includes('Male')) {
+            maleVoice = voice;
+        }
+    }
+    call.setVoices(femaleVoice, {man: maleVoice});
+
+    isSpeechApiAvailable = true;
     updateUI();
 }
 

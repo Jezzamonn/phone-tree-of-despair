@@ -12,6 +12,14 @@ class Call {
         this.cleanUpLastAction = () => {};
 
         this.onEnd = () => {};
+
+        this.defaultVoice = null;
+        this.voices = {};
+    }
+
+    setVoices(defaultVoice, otherVoices) {
+        this.defaultVoice = defaultVoice;
+        this.otherVoices = otherVoices;
     }
 
     isActive() {
@@ -73,13 +81,21 @@ class Call {
         console.log(`action ${action.type}`);
         switch (action.type) {
             case 'say': {
-                // Can't do this on my computer because the voice synths are broken.
-                // So just log it and delay
-                console.log(`say: ${action.text}`);
-                const handle = setTimeout(() => this.nextAction(), 5000);
+                const utterance = new SpeechSynthesisUtterance(action.text);
+                if (action.voice == '') {
+                    utterance.voice = this.defaultVoice;
+                }
+                else {
+                    utterance.voice = this.voices[action.voice];
+                }
+                utterance.onend = () => {
+                    this.nextAction();
+                }
+                speechSynthesis.speak(utterance);
 
                 this.cleanUpLastAction = () => {
-                    clearTimeout(handle);
+                    speechSynthesis.cancel();
+                    utterance.onend = null;
                 }
                 break;
             }
@@ -122,7 +138,7 @@ class Call {
                 break;
             }
             case 'pause': {
-                const handle = setTimeout(() => this.nextAction(), 1000);
+                const handle = setTimeout(() => this.nextAction(), action.length * 1000);
 
                 this.cleanUpLastAction = () => {
                     clearTimeout(handle);

@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?><Response><Play>https://storage.googleapis.com/stellar-ether-198321.appspot.com/id/id-intro.mp3</Play><Gather input="speech" action="/id-name1" hints="James Smith" timeout="3"/><Redirect>./id-name-no-response</Redirect></Response>
+<?xml version="1.0" encoding="UTF-8"?><Response><Play>https://storage.googleapis.com/stellar-ether-198321.appspot.com/id/id-intro.mp3</Play><Gather input="speech" action="/id-name1" hints="James Smith" timeout="3"/><Redirect>/id-name-no-response</Redirect></Response>

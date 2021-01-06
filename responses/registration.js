@@ -15,7 +15,7 @@ function registration() {
                 .say('I got "James Smith", is that correct?')
                 .pause(),
         })
-        .redirect('./registration-fail');
+        .redirect('/registration-fail');
 };
 
 function registrationNameResponse({speech=''}={}) {

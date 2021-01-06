@@ -11,7 +11,7 @@ function address() {
                 .pause(),
         })
         //.say(`Hi, this is the addressing office. I'm currently on lunch break actually, is this something that can wait?`)
-        .redirect('./address-can-wait');
+        .redirect('/address-can-wait');
 };
 
 function addressCanWait({speech=''}={}) {
@@ -34,7 +34,7 @@ function addressCanWait({speech=''}={}) {
                 .play('addressing/addressing-coffee-hint.mp3')
                 .pause(),
         })
-        .redirect('./address-clue-too-long');
+        .redirect('/address-clue-too-long');
 };
 
 function addressClue1({speech=''}={}) {
@@ -51,7 +51,7 @@ function addressClue1({speech=''}={}) {
                 .play('addressing/addressing-oxygen-hint.mp3')
                 .pause(),
         })
-        .redirect('./address-clue-too-long');
+        .redirect('/address-clue-too-long');
 };
 
 function addressClue3({speech=''}={}) {
@@ -69,7 +69,7 @@ function addressClue3({speech=''}={}) {
                 .play('addressing/addressing-silent-hint.mp3')
                 .pause(),
         })
-        .redirect('./address-clue-too-long');
+        .redirect('/address-clue-too-long');
 };
 
 function addressClue4({speech=''}={}) {

@@ -10,7 +10,7 @@ function officeAddress() {
                 // .say(`Hi, you've reached the "what is the address of my registration office" department. Now, you're gonna have to be patient, 'cause we're having some database problems at the moment. Um... actually would you mind helping? I need you to look up the postal code of a few places. Um, lets start with Antelope Hills, Wyoming, USA. Can you key in the ZIP code?`)
                 .play('office-address/office-address-intro.mp3'),
         })
-        .redirect('./office-address-too-long');
+        .redirect('/office-address-too-long');
 }
 
 function officeAddress2({digits=''}={}) {
@@ -28,7 +28,7 @@ function officeAddress2({digits=''}={}) {
                 .play('office-address/office-address-kathu.mp3')
                 .say(`That's K. A. T. H. U.`, {voice: 'man'}),
         })
-        .redirect('./office-address-too-long');
+        .redirect('/office-address-too-long');
 }
 
 function officeAddress3({digits=''}={}) {
@@ -45,7 +45,7 @@ function officeAddress3({digits=''}={}) {
                 // .say(`Ok... Great, that worked too. Um. Can you also check the postal code of White Cliffs, New South Wales, Australia?`)
                 .play('office-address/office-address-white-cliffs.mp3'),
         })
-        .redirect('./office-address-too-long');
+        .redirect('/office-address-too-long');
 }
 
 function officeAddress4({digits=''}={}) {

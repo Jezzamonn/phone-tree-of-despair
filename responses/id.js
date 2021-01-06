@@ -9,7 +9,7 @@ function id() {
             hints: ['James Smith'],
             timeout: 3,
         })
-        .redirect('./id-name-no-response');
+        .redirect('/id-name-no-response');
 }
 
 function idName1({speech=''}={}) {
@@ -30,7 +30,7 @@ function idName1({speech=''}={}) {
             whileWaiting: new ActionList()
                 .play('id/id-no-name1.mp3'),
         })
-        .redirect('./id-name-no-response');
+        .redirect('/id-name-no-response');
 }
 
 function idName2({speech=''}={}) {
@@ -60,7 +60,7 @@ function idNameCorrect() {
                 // .say(`Ah, great, James Smith. (as if reading from the screen) Pin number 2 4 3 8, Session identifier 9 0, Flange-tron code 6 1 2, Isotope number 97 thousand, 6 hundred and 48. Ok great. Now, before I can give you your registration ID, I'll need some information to confirm your identity. First, can I have your personal pin number? Just key it in on the number pad there.`)
                 .play('id/id-challenge-intro.mp3'),
         })
-        .redirect('./id-challenge-wrong');
+        .redirect('/id-challenge-wrong');
 }
 
 function idChallenge2({digits=''}={}) {
@@ -77,7 +77,7 @@ function idChallenge2({digits=''}={}) {
                 // .say(`Ok, now I'll need your Flange-tron code.`)
                 .play('id/id-flangetron.mp3'),
         })
-        .redirect('./id-challenge-wrong');
+        .redirect('/id-challenge-wrong');
 }
 
 function idChallenge3({digits=''}={}) {
@@ -94,7 +94,7 @@ function idChallenge3({digits=''}={}) {
                 // .say(`Ok, and now your isotope number?`)
                 .play('id/id-isotope.mp3'),
         })
-        .redirect('./id-challenge-wrong');
+        .redirect('/id-challenge-wrong');
 }
 
 function idChallenge4({digits=''}={}) {

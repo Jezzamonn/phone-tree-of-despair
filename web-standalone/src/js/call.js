@@ -1,12 +1,17 @@
 const { ActionList } = require('../../../model/action-list.js');
 const { getResponse } = require('./responses.js');
 
+const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+
 class Call {
     constructor() {
         this.actionQueue = [];
 
         this.getDigitsAction = null;
         this.currentDigits = '';
+
+        /** @type {SpeechRecognition} */
+        this.speechRecognition = null;
 
         // Function that when called, will clean up everthing that needs to be cleaned up for this action.
         this.cleanUpLastAction = () => {};
@@ -38,9 +43,23 @@ class Call {
 
     cleanUpActionQueue() {
         this.cleanUpLastAction();
+        this.cleanUpGetDigits();
+        this.cleanUpGetSpeech();
         this.actionQueue = [];
+    }
+
+    cleanUpGetDigits() {
         this.getDigitsAction = null;
         this.currentDigits = '';
+    }
+
+    cleanUpGetSpeech() {
+        if (this.speechRecognition == null) {
+            return;
+        }
+        this.speechRecognition.onresult = null;
+        this.speechRecognition.abort();
+        this.speechRecognition = null;
     }
 
     addDigit(digit) {
@@ -66,6 +85,21 @@ class Call {
         this.actionQueue.push({type: 'end'});
 
         this.nextAction();
+    }
+
+    /**
+     * Inserts actions to the start of the queue that handle either getting
+     * speech or getting digits, while doing other actions at the same time.
+     */
+    insertGatherActions(whileWaiting, timeout) {
+        if (whileWaiting == null) {
+            whileWaiting = new ActionList();
+        }
+        // A little dodge, but we're inserting some extra actions of our own.
+        this.actionQueue.unshift(
+            ...whileWaiting.actions,
+            {type: 'pause', length: timeout},
+            {type: 'endGather'});
     }
 
     nextAction() {
@@ -120,16 +154,37 @@ class Call {
                 this.currentDigits = '';
                 this.getDigitsAction = action;
 
-                let whileWaiting = action.whileWaiting;
-                if (whileWaiting == null) {
-                    whileWaiting = new ActionList();
+                this.insertGatherActions(action.whileWaiting, action.timeout);
+                this.nextAction();
+                break;
+            }
+            case 'getSpeech': {
+                if (this.speechRecognition != null) {
+                    console.error('We already have a speechRecognition. Should just be one.');
                 }
-                // A little dodge, but we're inserting some extra actions of our own.
-                this.actionQueue.unshift(
-                    ...whileWaiting.actions,
-                    {type: 'pause', length: action.timeout},
-                    {type: 'endGather'});
 
+                // TODO: Use the hints somehow.
+                const speechRec = new SpeechRecognition();
+                speechRec.lang = 'en'; // I wonder what it assumes for the region.
+
+                speechRec.onresult = (evt) => {
+                    if (evt.results == null || evt.results.length == 0 || evt.results[0].length == 0) {
+                        return;
+                    }
+                    const result = evt.results[0];
+                    const chosenAlternative = result[0];
+
+                    console.log(`Got speech: ${chosenAlternative.transcript} + confidence: ${chosenAlternative.confidence.toFixed(2)}`)
+
+                    this.setAction(
+                        action.responseDestination,
+                        {speech: chosenAlternative.transcript}
+                    );
+                }
+                speechRec.start();
+
+                this.speechRecognition = speechRec;
+                this.insertGatherActions(action.whileWaiting, action.timeout);
                 this.nextAction();
                 break;
             }
@@ -146,7 +201,8 @@ class Call {
                 break;
             }
             case 'endGather': {
-                this.getDigitsAction = null;
+                this.cleanUpGetDigits();
+                this.cleanUpGetSpeech();
                 this.nextAction();
                 break;
             }

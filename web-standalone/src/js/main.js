@@ -1,5 +1,7 @@
 const { Call } = require('./call.js');
 
+const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+
 const buttonNames = [
     '1',
     '2',
@@ -28,7 +30,7 @@ function hasActiveCall() {
 }
 
 function isReadyForCall() {
-    return isSpeechApiAvailable;
+    return (SpeechRecognition != null) && isSpeechApiAvailable;
 }
 
 function init() {
@@ -127,6 +129,8 @@ function updateUI() {
         // You can only press the buttons if you're in the middle of a call.
         button.disabled = !hasCall;
     }
+
+    // TODO: Show the popup if the browser doesn't support speech rec.
 }
 
 window.onload = init;

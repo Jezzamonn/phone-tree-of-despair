@@ -24,17 +24,33 @@ const responseGroups = [
 ];
 
 function sayAll() {
-    const actionList = new ActionList().play('beep.mp3');
+    const sayActions = [];
     for (const responseGroup of responseGroups) {
         for (const responseName of Object.keys(responseGroup)) {
-            const as = responseGroup[responseName]();
-            for (const action of as.actions) {
-                if (action.type == 'say') {
-                    actionList.actions.push(action);
-                    actionList.play('beep.mp3');
+            const actionList = responseGroup[responseName]();
+            for (const action of actionList.actions) {
+                if (action.type != 'say') {
+                    continue;
                 }
+                var foundMatch = false;
+                for (const existingAction of sayActions) {
+                    if (existingAction.text == action.text && existingAction.voice == action.voice) {
+                        foundMatch = true;
+                        break;
+                    }
+                }
+                if (foundMatch) {
+                    continue;
+                }
+
+                sayActions.push(action);
             }
         }
+    }
+    const actionList = new ActionList().play('beep.mp3');
+    for (const action of sayActions) {
+        actionList.actions.push(action);
+        actionList.play('beep.mp3');
     }
     return actionList;
 }

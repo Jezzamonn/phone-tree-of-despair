@@ -38,7 +38,7 @@ async function compareWithGolden(responseText, goldenPath) {
             `Run \`npm run update-goldens\` to update it.`)
     }
 
-    expect(xmlFormat(responseText)).to.equal(xmlFormat(goldenText));
+    expect(responseText).to.equal(goldenText);
 }
 
 /**
@@ -65,7 +65,9 @@ async function checkEndPoint(endPoint, {digits=null, speech=null} = {}) {
         }
         const response = await testRequest.expect(200);
 
-        await compareWithGolden(response.text, xmlName);
+        const formattedXml = xmlFormat(response.text);
+
+        await compareWithGolden(formattedXml, xmlName);
     });
 }
 

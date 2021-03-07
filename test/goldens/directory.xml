@@ -1,1 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><Response><Play>https://storage.googleapis.com/stellar-ether-198321.appspot.com/directory/directory.mp3</Play><Pause length="1"/><Redirect>/entry</Redirect></Response>
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Play>
+        https://storage.googleapis.com/stellar-ether-198321.appspot.com/directory/directory.mp3
+    </Play>
+    <Pause length="1"/>
+    <Redirect>
+        /entry
+    </Redirect>
+</Response>

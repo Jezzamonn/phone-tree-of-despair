@@ -1,1 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><Response><Play>https://storage.googleapis.com/stellar-ether-198321.appspot.com/victory/victory-intro.mp3</Play><Play>https://storage.googleapis.com/stellar-ether-198321.appspot.com/victory/victory-ending1.mp3</Play><Play>https://storage.googleapis.com/stellar-ether-198321.appspot.com/victory/victory-goodbye.mp3</Play></Response>
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Play>
+        https://storage.googleapis.com/stellar-ether-198321.appspot.com/victory/victory-intro.mp3
+    </Play>
+    <Play>
+        https://storage.googleapis.com/stellar-ether-198321.appspot.com/victory/victory-ending1.mp3
+    </Play>
+    <Play>
+        https://storage.googleapis.com/stellar-ether-198321.appspot.com/victory/victory-goodbye.mp3
+    </Play>
+</Response>

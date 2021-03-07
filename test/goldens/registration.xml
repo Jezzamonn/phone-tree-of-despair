@@ -1,1 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?><Response><Say>Welcome to the registration office. May I have your name?</Say><Pause length="1"/><Pause length="1"/><Pause length="1"/><Gather input="speech" action="/registration-name-response" hints="yes,no" timeout="3"><Say>I got "James Smith", is that correct?</Say><Pause length="1"/></Gather><Redirect>/registration-fail</Redirect></Response>
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Say>
+        Welcome to the registration office. May I have your name?
+    </Say>
+    <Pause length="1"/>
+    <Pause length="1"/>
+    <Pause length="1"/>
+    <Gather input="speech" action="/registration-name-response" hints="yes,no" timeout="3">
+        <Say>
+            I got "James Smith", is that correct?
+        </Say>
+        <Pause length="1"/>
+    </Gather>
+    <Redirect>
+        /registration-fail
+    </Redirect>
+</Response>

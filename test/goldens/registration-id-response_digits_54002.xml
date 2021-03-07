@@ -1,1 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><Response><Gather input="dtmf" action="/registration-address-response" numDigits="5" timeout="10"><Say>Ok. Now key in the 5 digit postal code for the registration office.</Say></Gather><Redirect>/registration-incorrect</Redirect></Response>
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Gather input="dtmf" action="/registration-address-response" numDigits="5" timeout="10">
+        <Say>
+            Ok. Now key in the 5 digit postal code for the registration office.
+        </Say>
+    </Gather>
+    <Redirect>
+        /registration-incorrect
+    </Redirect>
+</Response>

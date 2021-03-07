@@ -4,6 +4,7 @@ const fs = require('fs/promises');
 const path = require('path');
 const { program } = require('commander');
 const { expect } = require('chai');
+const xmlFormat = require('xml-formatter');
 
 program.option('--update-goldens', 'whether to update golden things instead of asserting');
 
@@ -36,7 +37,8 @@ async function compareWithGolden(responseText, goldenPath) {
             `${responseText}\n\n` +
             `Run \`npm run update-goldens\` to update it.`)
     }
-    expect(responseText).to.equal(goldenText);
+
+    expect(xmlFormat(responseText)).to.equal(xmlFormat(goldenText));
 }
 
 /**

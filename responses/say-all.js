@@ -47,10 +47,10 @@ function sayAll() {
             }
         }
     }
-    const actionList = new ActionList().play('beep2.mp3');
+    const actionList = new ActionList().play('beep3.mp3');
     for (const action of sayActions) {
         actionList.actions.push(action);
-        actionList.play('beep2.mp3');
+        actionList.play('beep3.mp3');
     }
     return actionList;
 }

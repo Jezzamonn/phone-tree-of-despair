@@ -208,3 +208,7 @@ describe('victory', function() {
     checkEndPoint('/victory1');
     checkEndPoint('/victory2');
 });
+
+describe('say-all', function() {
+    checkEndPoint('/say-all');
+});

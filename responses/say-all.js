@@ -24,29 +24,42 @@ const responseGroups = [
 ];
 
 function sayAll() {
-    const sayActions = [];
+    const allActions = [];
+
     for (const responseGroup of responseGroups) {
         for (const responseName of Object.keys(responseGroup)) {
             const actionList = responseGroup[responseName]();
-            for (const action of actionList.actions) {
-                if (action.type != 'say') {
-                    continue;
-                }
-                var foundMatch = false;
-                for (const existingAction of sayActions) {
-                    if (existingAction.text == action.text && existingAction.voice == action.voice) {
-                        foundMatch = true;
-                        break;
-                    }
-                }
-                if (foundMatch) {
-                    continue;
-                }
-
-                sayActions.push(action);
-            }
+            allActions.push(...actionList.actions);
         }
     }
+    // Find all nested actions
+    for (let i = 0; i < allActions.length; i++) {
+        const action = allActions[i];
+        if (action.type == 'getDigits' || action.type == 'getSpeech') {
+            // TODO: Probs have to check for null
+            const subActions = action.whileWaiting?.actions ?? [];
+            allActions.push(...subActions);
+        }
+    }
+
+    const sayActions = [];
+    for (const action of allActions) {
+        if (action.type != 'say') {
+            continue;
+        }
+        let hasMatch = false;
+        for (const existingAction of sayActions) {
+            if (action.text == existingAction.text && action.voice == existingAction.voice) {
+                hasMatch = true;
+                break;
+            }
+        }
+        if (hasMatch) {
+            continue;
+        }
+        sayActions.push(action);
+    }
+
     const actionList = new ActionList().play('beep3.mp3');
     for (const action of sayActions) {
         actionList.actions.push(action);

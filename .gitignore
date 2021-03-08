@@ -8,5 +8,5 @@ secrets.*
 app.yaml
 
 promo/misc
-
+assets/
 .vscode/

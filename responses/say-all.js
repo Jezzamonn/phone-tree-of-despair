@@ -60,7 +60,24 @@ function sayAll() {
         sayActions.push(action);
     }
 
-    const actionList = new ActionList().play('beep3.mp3');
+    // Add extra ones that got left out
+    const extraThings = new ActionList()
+        .say("That's Bob's office")
+        .say("Great. It looks like you're trying to renew your registration. I'll need three things from you: Your registration ID, your registration office address, and the date of your last renewal.")
+        .say('First, key in your 5 digit registration ID.')
+        .say('Ok. Now key in the 5 digit postal code for the registration office.')
+        .say('Ok. Now key in the date of your last renewal. First enter the year, then the month, then the day.')
+        .say("Alright, that all looks correct! Your registration is now renewed. Before you leave, can you rate your customer experience today?")
+        .say('Please enter a number from 1 to 5.')
+        .say(`That's very nice of you to say that. Thank you for your rating.`)
+        .say('I see. Thank you for your rating.')
+        .say('How dare you.')
+        .say(`That's K. A. T. H. U.`, {voice: 'man'})
+
+    sayActions.push(...extraThings.actions);
+
+    const actionList = new ActionList()
+        .play('beep3.mp3')
     for (const action of sayActions) {
         actionList.actions.push(action);
         actionList.play('beep3.mp3');

@@ -26,7 +26,8 @@ function officeAddress2({digits=''}={}) {
             whileWaiting: new ActionList()
                 // .say(`Ok.... That looks right. Ok, now I need the postal code of... Kathu, South Africa.`)
                 .play('office-address/office-address-kathu.mp3')
-                .say(`That's K. A. T. H. U.`, {voice: 'man'}),
+                // .say(`That's K. A. T. H. U.`, {voice: 'man'}),
+                .play('office-address/thats-k-a-t-h-u.mp3'),
         })
         .redirect('/office-address-too-long');
 }

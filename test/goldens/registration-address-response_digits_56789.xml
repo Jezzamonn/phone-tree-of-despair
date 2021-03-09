@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
     <Gather input="dtmf" action="/registration-date-response" numDigits="8" timeout="10">
-        <Say>
-            Ok. Now key in the date of your last renewal. First enter the year, then the month, then the day.
-        </Say>
+        <Play>
+            https://storage.googleapis.com/stellar-ether-198321.appspot.com/registration/ok-now-key-in-the-date-of-your-last-renewal.mp3
+        </Play>
     </Gather>
     <Redirect>
         /registration-incorrect

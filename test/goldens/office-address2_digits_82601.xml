@@ -4,9 +4,9 @@
         <Play>
             https://storage.googleapis.com/stellar-ether-198321.appspot.com/office-address/office-address-kathu.mp3
         </Play>
-        <Say voice="man">
-            That's K. A. T. H. U.
-        </Say>
+        <Play>
+            https://storage.googleapis.com/stellar-ether-198321.appspot.com/office-address/thats-k-a-t-h-u.mp3
+        </Play>
     </Gather>
     <Redirect>
         /office-address-too-long

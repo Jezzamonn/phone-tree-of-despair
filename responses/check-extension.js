@@ -52,10 +52,12 @@ function checkExtension({digits=''}={}) {
                 .play('noise/chickensound.mp3');
         case '364':
             return new ActionList()
-                .say("That's Bob's office");
+                // .say("That's Bob's office");
+                .play('check-extension/thats-bobs-office.mp3');
         default:
             return new ActionList()
-                .say("Sorry, that's not a valid response. Please hold.")
+                // .say("Sorry, that's not a valid response. Please hold.")
+                .play('check-extension/sorry-thats-not-a-valid-response.mp3')
                 .hold();
     }
 };

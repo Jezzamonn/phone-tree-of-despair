@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <Say>
-        How dare you.
-    </Say>
+    <Play>
+        https://storage.googleapis.com/stellar-ether-198321.appspot.com/registration/how-dare-you.mp3
+    </Play>
     <Pause length="1"/>
     <Redirect>
         /victory1

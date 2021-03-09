@@ -4,61 +4,67 @@
         https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
     </Play>
     <Say>
-        Sorry, that's not a valid response. Please hold.
+        That's Bob's office
     </Say>
     <Play>
         https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
     </Play>
     <Say>
-        Welcome to the registration office. May I have your name?
+        Great. It looks like you're trying to renew your registration. I'll need three things from you: Your registration ID, your registration office address, and the date of your last renewal.
     </Say>
     <Play>
         https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
     </Play>
     <Say>
-        Sorry about that. Please hold
+        First, key in your 5 digit registration ID.
     </Say>
     <Play>
         https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
     </Play>
     <Say>
-        Sorry, that doesn't look correct. If you need to look up information about your registration, try contacting the other departments. You can find their extension codes by accessing the extension directory by pressing 1 2 3 at the main menu. I'll transfer you there now.
+        Ok. Now key in the 5 digit postal code for the registration office.
     </Say>
     <Play>
         https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
     </Play>
     <Say>
-        Error. That is not a number from 1 to 5. Error. Error.
+        Ok. Now key in the date of your last renewal. First enter the year, then the month, then the day.
+    </Say>
+    <Play>
+        https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
+    </Play>
+    <Say>
+        Alright, that all looks correct! Your registration is now renewed. Before you leave, can you rate your customer experience today?
+    </Say>
+    <Play>
+        https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
+    </Play>
+    <Say>
+        Please enter a number from 1 to 5.
+    </Say>
+    <Play>
+        https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
+    </Play>
+    <Say>
+        That's very nice of you to say that. Thank you for your rating.
+    </Say>
+    <Play>
+        https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
+    </Play>
+    <Say>
+        I see. Thank you for your rating.
+    </Say>
+    <Play>
+        https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
+    </Play>
+    <Say>
+        How dare you.
     </Say>
     <Play>
         https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
     </Play>
     <Say voice="man">
-        This is the International Date Time Zone Consortium. The datetime of your last renewal, as a Unix Timestamp, is 1 5 7 4. 7 2 6 4. 0 0.
-    </Say>
-    <Play>
-        https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
-    </Play>
-    <Say voice="man">
-        If you just need the day, it was a Tuesday.
-    </Say>
-    <Play>
-        https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
-    </Play>
-    <Say>
-        Thank you for calling the Phone Tree of Despair. Your call is so, so, important to us.
-    </Say>
-    <Play>
-        https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
-    </Play>
-    <Say>
-        If you have an extension code, enter it now. Otherwise, stay on the line for more information.
-    </Say>
-    <Play>
-        https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3
-    </Play>
-    <Say>
-        I got "James Smith", is that correct?
+        That's K. A. T. H. U.
     </Say>
     <Play>
         https://storage.googleapis.com/stellar-ether-198321.appspot.com/beep3.mp3

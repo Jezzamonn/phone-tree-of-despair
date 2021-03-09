@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <Say>
-        That's Bob's office
-    </Say>
+    <Play>
+        https://storage.googleapis.com/stellar-ether-198321.appspot.com/check-extension/thats-bobs-office.mp3
+    </Play>
 </Response>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <Say>
-        Welcome to the registration office. May I have your name?
-    </Say>
+    <Play>
+        https://storage.googleapis.com/stellar-ether-198321.appspot.com/registration/welcome-to-the-registration-office.mp3
+    </Play>
     <Pause length="1"/>
     <Pause length="1"/>
     <Pause length="1"/>
     <Gather input="speech" action="/registration-name-response" hints="yes,no" timeout="3">
-        <Say>
-            I got "James Smith", is that correct?
-        </Say>
+        <Play>
+            https://storage.googleapis.com/stellar-ether-198321.appspot.com/registration/i-got-james-smith.mp3
+        </Play>
         <Pause length="1"/>
     </Gather>
     <Redirect>

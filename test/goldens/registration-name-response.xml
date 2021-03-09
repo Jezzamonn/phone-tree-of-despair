@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <Say>
-        Sorry about that. Please hold
-    </Say>
+    <Play>
+        https://storage.googleapis.com/stellar-ether-198321.appspot.com/registration/sorry-about-that-please-hold.mp3
+    </Play>
     <Play>
         https://storage.googleapis.com/stellar-ether-198321.appspot.com/please-hold-mangled.mp3
     </Play>

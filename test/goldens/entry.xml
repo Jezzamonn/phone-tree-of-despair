@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
     <Gather input="dtmf" action="/check-extension" numDigits="3" timeout="5">
-        <Say>
-            Thank you for calling the Phone Tree of Despair. Your call is so, so, important to us.
-        </Say>
+        <Play>
+            https://storage.googleapis.com/stellar-ether-198321.appspot.com/entry/thank-you-for-calling.mp3
+        </Play>
         <Pause length="1"/>
-        <Say>
-            If you have an extension code, enter it now. Otherwise, stay on the line for more information.
-        </Say>
+        <Play>
+            https://storage.googleapis.com/stellar-ether-198321.appspot.com/entry/if-you-have-an-extension-code.mp3
+        </Play>
     </Gather>
     <Redirect>
         /more-info

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Response>
-    <Say>
-        That's very nice of you to say that. Thank you for your rating.
-    </Say>
+    <Play>
+        https://storage.googleapis.com/stellar-ether-198321.appspot.com/registration/thats-very-nice-of-you-to-say.mp3
+    </Play>
     <Pause length="1"/>
     <Redirect>
         /victory1

@@ -6,7 +6,7 @@ const { program } = require('commander');
 const { expect } = require('chai');
 const xmlFormat = require('xml-formatter');
 
-program.option('--update-goldens', 'whether to update golden things instead of asserting');
+program.allowUnknownOption().option('--update-goldens', 'whether to update golden things instead of asserting');
 
 program.parse(process.argv);
 
@@ -44,7 +44,7 @@ async function compareWithGolden(responseText, goldenPath) {
 /**
  * @param {String} endPoint end point, with the slash at the start.
  */
-async function checkEndPoint(endPoint, {digits=null, speech=null} = {}) {
+async function checkEndPoint(endPoint, {digits=null, speech=null, allowSay=false} = {}) {
     const baseName = endPoint.slice(1);
     let testName = baseName;
     if (digits != null) {
@@ -68,6 +68,10 @@ async function checkEndPoint(endPoint, {digits=null, speech=null} = {}) {
         const formattedXml = xmlFormat(response.text);
 
         await compareWithGolden(formattedXml, xmlName);
+
+        if (!allowSay) {
+            expect(formattedXml).to.not.contain('Say');
+        }
     });
 }
 
@@ -214,5 +218,5 @@ describe('victory', function() {
 });
 
 describe('say-all', function() {
-    checkEndPoint('/say-all');
+    checkEndPoint('/say-all', {allowSay: true});
 });

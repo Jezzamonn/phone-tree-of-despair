@@ -159,9 +159,40 @@ class Call {
                 break;
             }
             case 'getSpeech': {
+                // Because the speech recognition doesn't filter out currently
+                // playing audio, we can't play speech at the same time. So we
+                // take the while waiting actions and do them first, and then
+                // postpone speech recognition until after by using a new
+                // command.
+                let whileWaitingActions = [];
+                if (action.whileWaiting) {
+                    whileWaitingActions = action.whileWaiting.actions;
+                }
+                let timeout = action.timeout;
+
+                // Remove the last pause, as we want to start getting speech results straight away.
+                while (whileWaitingActions.length > 0 &&
+                       whileWaitingActions[whileWaitingActions.length-1].type == 'pause') {
+                    let pauseAction = whileWaitingActions.pop();
+                    timeout += pauseAction.length;
+                }
+
+                this.actionQueue.unshift(
+                    ...whileWaitingActions,
+                    {type: 'startSpeechRecognition', responseDestination: action.responseDestination},
+                    {type: 'pause', length: timeout},
+                    {type: 'endGather'});
+                this.nextAction();
+                break;
+            }
+            case 'startSpeechRecognition': {
+                // Handle speech recognition, now we've done the while waiting
+                // actions.
                 if (this.speechRecognition != null) {
                     console.error('We already have a speechRecognition. Should just be one.');
                 }
+
+                console.log('Starting speech recognition');
 
                 // TODO: Use the hints somehow.
                 const speechRec = new SpeechRecognition();
@@ -169,6 +200,7 @@ class Call {
 
                 speechRec.onresult = (evt) => {
                     if (evt.results == null || evt.results.length == 0 || evt.results[0].length == 0) {
+                        console.warn('Finished getting speech, but null result!');
                         return;
                     }
                     const result = evt.results[0];
@@ -182,9 +214,7 @@ class Call {
                     );
                 }
                 speechRec.start();
-
                 this.speechRecognition = speechRec;
-                this.insertGatherActions(action.whileWaiting, action.timeout);
                 this.nextAction();
                 break;
             }

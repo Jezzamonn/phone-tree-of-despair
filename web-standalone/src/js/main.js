@@ -18,6 +18,19 @@ const buttonNames = [
     'call',
 ];
 
+function getButtonSfxName(name) {
+    switch (name) {
+        case 'call':
+            return '';
+        case '*':
+            return 'star.mp3';
+        case '#':
+            return 'hash.mp3';
+        default:
+            return `${name}.mp3`;
+    }
+}
+
 let isSpeechApiAvailable = false;
 
 let enteredNumbers = '';
@@ -36,7 +49,16 @@ function isReadyForCall() {
 function init() {
     const buttons = document.querySelectorAll('.numpad-element');
     for (const [i, button] of buttons.entries()) {
-        button.addEventListener('click', () => handleButtonPress(buttonNames[i]));
+        const name = buttonNames[i];
+        const sfxName = getButtonSfxName(name);
+        button.addEventListener('click', () => handleButtonPress(name));
+        button.addEventListener('mousedown', () => {
+            if (name == 'call') {
+                return;
+            }
+            const audio = new Audio(`static/sfx/${sfxName}`);
+            audio.play();
+        });
     }
 
     speechSynthesis.onvoiceschanged = () => {

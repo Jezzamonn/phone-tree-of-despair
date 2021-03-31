@@ -28,9 +28,13 @@ p {
     border: none;
     outline: none;
     padding: 0;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.1s;
 
     &:not([disabled]) {
+        &:hover {
+            transform: scale(1.05, 1.05);
+        }
+
         &:hover, &:focus {
             background-color: #ddd;
         }

@@ -115,22 +115,8 @@ class Call {
         console.log(`action ${action.type}`);
         switch (action.type) {
             case 'say': {
-                const utterance = new SpeechSynthesisUtterance(action.text);
-                if (action.voice == '') {
-                    utterance.voice = this.defaultVoice;
-                }
-                else {
-                    utterance.voice = this.voices[action.voice];
-                }
-                utterance.onend = () => {
-                    this.nextAction();
-                }
-                speechSynthesis.speak(utterance);
-
-                this.cleanUpLastAction = () => {
-                    speechSynthesis.cancel();
-                    utterance.onend = null;
-                }
+                // Just skip it.
+                this.nextAction();
                 break;
             }
             case 'play': {

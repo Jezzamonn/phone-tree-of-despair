@@ -36,7 +36,12 @@ let isSpeechApiAvailable = false;
 let enteredNumbers = '';
 
 let call = new Call();
-call.onEnd = () => updateUI();
+call.onEnd = () => {
+    updateUI();
+
+    const audio = new Audio('static/sfx/hang-up.mp3');
+    audio.play();
+}
 
 function hasActiveCall() {
     return call.isActive();

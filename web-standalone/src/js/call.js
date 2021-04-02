@@ -17,14 +17,6 @@ class Call {
         this.cleanUpLastAction = () => {};
 
         this.onEnd = () => {};
-
-        this.defaultVoice = null;
-        this.voices = {};
-    }
-
-    setVoices(defaultVoice, otherVoices) {
-        this.defaultVoice = defaultVoice;
-        this.voices = otherVoices;
     }
 
     isActive() {
@@ -114,11 +106,6 @@ class Call {
 
         console.log(`action ${action.type}`);
         switch (action.type) {
-            case 'say': {
-                // Just skip it.
-                this.nextAction();
-                break;
-            }
             case 'play': {
                 const basePath = 'static/'
                 const fullPath = basePath + action.soundPath;
@@ -226,6 +213,7 @@ class Call {
                 this.end();
                 break;
             }
+            case 'say':
             default: {
                 // Skip.
                 this.nextAction();

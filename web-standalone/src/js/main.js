@@ -31,8 +31,6 @@ function getButtonSfxName(name) {
     }
 }
 
-let isSpeechApiAvailable = false;
-
 let enteredNumbers = '';
 
 let call = new Call();
@@ -48,7 +46,7 @@ function hasActiveCall() {
 }
 
 function isReadyForCall() {
-    return (SpeechRecognition != null) && isSpeechApiAvailable;
+    return (SpeechRecognition != null);
 }
 
 function init() {
@@ -66,31 +64,6 @@ function init() {
         });
     }
 
-    speechSynthesis.onvoiceschanged = () => {
-        setVoices(speechSynthesis.getVoices());
-    }
-    setVoices(speechSynthesis.getVoices());
-
-    updateUI();
-}
-
-function setVoices(voices) {
-    if (voices.length == 0) {
-        return;
-    }
-    let femaleVoice = null;
-    let maleVoice = null;
-    for (const voice of voices) {
-        if (voice.name.includes('Female')) {
-            femaleVoice = voice;
-        }
-        if (voice.name.includes('Male')) {
-            maleVoice = voice;
-        }
-    }
-    call.setVoices(femaleVoice, {man: maleVoice});
-
-    isSpeechApiAvailable = true;
     updateUI();
 }
 

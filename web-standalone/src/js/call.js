@@ -210,7 +210,7 @@ class Call {
 
                     this.setAction(
                         action.responseDestination,
-                        {speech: chosenAlternative.transcript}
+                        {speech: chosenAlternative.transcript.toLowerCase()}
                     );
                 }
                 speechRec.start();

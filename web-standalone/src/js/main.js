@@ -130,7 +130,9 @@ function updateUI() {
         button.disabled = !hasCall;
     }
 
-    // TODO: Show the popup if the browser doesn't support speech rec.
+    const unavailableMessage = document.querySelector('.unavailable-message');
+    const isSpeechRecognitionSupported = SpeechRecognition != null;
+    unavailableMessage.classList.toggle('hidden', isSpeechRecognitionSupported);
 }
 
 window.onload = init;

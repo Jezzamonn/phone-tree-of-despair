@@ -3,8 +3,13 @@ const request = require('supertest');
 const fs = require('fs/promises');
 const path = require('path');
 const { program } = require('commander');
-const { expect } = require('chai');
+const chai = require('chai');
+const { expect } = chai;
+const chaiString = require('chai-string');
 const xmlFormat = require('xml-formatter');
+const xmlParser = require('fast-xml-parser');
+
+chai.use(chaiString);
 
 program.allowUnknownOption().option('--update-goldens', 'whether to update golden things instead of asserting');
 
@@ -41,6 +46,32 @@ async function compareWithGolden(responseText, goldenPath) {
     expect(responseText).to.equal(goldenText);
 }
 
+async function checkPlayUrlsAreValid(parsedResponse) {
+    if ('Play' in parsedResponse) {
+        let playUrls = parsedResponse['Play'];
+        if (typeof(playUrls) == 'string') {
+            playUrls = [playUrls];
+        }
+
+        for (const url of playUrls) {
+            expect(url).to.startWith('https://storage.googleapis.com/stellar-ether-198321.appspot.com/');
+
+            const path = url.replace('https://storage.googleapis.com/stellar-ether-198321.appspot.com/', '');
+
+            const staticDir = 'static/';
+
+            await fs.access(staticDir + path);
+
+            console.log(`Checked path ${path}`);
+        }
+    }
+    for (const value of Object.values(parsedResponse)) {
+        if (typeof(value) == 'object') {
+            await checkPlayUrlsAreValid(value);
+        }
+    }
+}
+
 /**
  * @param {String} endPoint end point, with the slash at the start.
  */
@@ -72,6 +103,10 @@ async function checkEndPoint(endPoint, {digits=null, speech=null, allowSay=false
         if (!allowSay) {
             expect(formattedXml).to.not.contain('Say');
         }
+
+        const responseJson = xmlParser.parse(response.text);
+        // Search for any "Play" element and check the source file exists
+        await checkPlayUrlsAreValid(responseJson);
     });
 }
 

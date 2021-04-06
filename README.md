@@ -8,15 +8,15 @@ Your goal is to navigate the ~~infuriating~~ expertly designed, user-friendly ph
 
 ## How to play:
 
-# US 🇺🇸: Call **+1 (928) 569 9118**.
-# AUS 🇦🇺: Call **+61 2 5551 6125**.
+# ~~US 🇺🇸: Call **+1 (928) 569 9118**.~~
+# ~~AUS 🇦🇺: Call **+61 2 5551 6125**.~~
 # Web 🌐: [jezzamon.itch.io/phone-tree-of-despair](https://jezzamon.itch.io/phone-tree-of-despair)
 
 *Estimated time to completion:* ***30 minutes.***
 
 (Also there is a secret ending!!)
 
-Note: If you call one of the real numbers, this game may cost you money depending on your phone plan. Watch out for international phone call fees if you're calling from a different country.
+~~Note: If you call one of the real numbers, this game may cost you money depending on your phone plan. Watch out for international phone call fees if you're calling from a different country.~~
 
 If that's a problem, you can use the web version on itch.io, which doesn't need to you make a real call :)
 
@@ -30,9 +30,9 @@ If that's a problem, you can use the web version on itch.io, which doesn't need 
 
 For those who are having trouble (or don't have the patience to figure out the full game), here's a [walkthrough](https://github.com/Jezzamonn/LD47/blob/master/dialog/walkthrough.md)!
 
-## Hosting costs 💸
+~~## Hosting costs 💸~~
 
-This game costs a small amount to host, so if you want to help cover costs, you can send a donation via the [itch.io page](https://jezzamon.itch.io/phone-tree-of-despair). $1 will be more than enough. I've loaded it with enough credit to last a while but it's possible it'll go down if it goes viral or something 😅
+~~This game costs a small amount to host, so if you want to help cover costs, you can send a donation via the [itch.io page](https://jezzamon.itch.io/phone-tree-of-despair). $1 will be more than enough. I've loaded it with enough credit to last a while but it's possible it'll go down if it goes viral or something 😅~~ This game is now free to run, because it runs in the browser!
 
 ## Credits ✨
 The programming and music were created entirely by me. Special thanks to those who did voice acting:

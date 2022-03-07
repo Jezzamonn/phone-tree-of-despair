@@ -140,8 +140,11 @@ p, h2 {
     width: 600px;
     max-width: 80vw;
 
-    background-color: rgba(255, 255, 255, 0.7);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.popup-transparent {
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .hidden {

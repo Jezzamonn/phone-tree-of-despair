@@ -64,6 +64,15 @@ function init() {
         });
     }
 
+    const popupButton = document.querySelector('.popup-button');
+    popupButton.addEventListener('click', () => {
+        console.log('hide');
+        const instructionMessage = document.querySelector('.instruction-message');
+        instructionMessage.classList.add('hidden');
+    });
+
+    checkSpeechRecognitionSupport();
+
     updateUI();
 }
 
@@ -129,10 +138,14 @@ function updateUI() {
         // You can only press the buttons if you're in the middle of a call.
         button.disabled = !hasCall;
     }
+}
 
+function checkSpeechRecognitionSupport() {
     const unavailableMessage = document.querySelector('.unavailable-message');
+    const instructionMessage = document.querySelector('.instruction-message');
     const isSpeechRecognitionSupported = SpeechRecognition != null;
     unavailableMessage.classList.toggle('hidden', isSpeechRecognitionSupported);
+    instructionMessage.classList.toggle('hidden', !isSpeechRecognitionSupported);
 }
 
 window.onload = init;
